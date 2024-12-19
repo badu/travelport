@@ -1,121 +1,61 @@
 package travelport
 
-import "net/http"
-
-type BaseResponse struct {
-	// Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId.
-	TransactionId string `json:"transactionId,omitempty"`
-	// Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId.
-	TraceId                string                   `json:"traceId,omitempty"`
-	Result                 *Result                  `json:"Result,omitempty"`
-	Identifier             *Identifier              `json:"Identifier,omitempty"`
-	NextSteps              *NextSteps               `json:"NextSteps,omitempty"`
-	ReferenceList          []ReferenceList          `json:"ReferenceList,omitempty"`
-	CurrencyRateConversion []CurrencyRateConversion `json:"CurrencyRateConversion,omitempty"`
+// DocumentOverridesResponseWrapper is an object.
+type DocumentOverridesResponseWrapper struct {
+	DocumentOverridesResponse *BaseResponse `json:"DocumentOverridesResponse,omitempty"` // DocumentOverridesResponse:
 }
 
-type ErrorResponse struct {
-	// Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId.
-	TransactionId string `json:"transactionId,omitempty"`
-	// Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId.
-	TraceId                string                   `json:"traceId,omitempty"`
-	Result                 *Result                  `json:"Result,omitempty"`
-	Identifier             *Identifier              `json:"Identifier,omitempty"`
-	NextSteps              *NextSteps               `json:"NextSteps,omitempty"`
-	ReferenceList          []ReferenceList          `json:"ReferenceList,omitempty"`
-	CurrencyRateConversion []CurrencyRateConversion `json:"CurrencyRateConversion,omitempty"`
+// EMDListResponseWrapper is an object.
+type EMDListResponseWrapper struct {
+	EMDListResponse *EMDListResponse `json:"EMDListResponse,omitempty"` // EMDListResponse:
 }
 
-type APIResponse struct {
-	*http.Response `json:"-"`
-	Message        string `json:"message,omitempty"`
-	// Operation is the name of the swagger operation.
-	Operation string `json:"operation,omitempty"`
-	// RequestURL is the request URL. This value is always available, even if the
-	// embedded *http.Response is nil.
-	RequestURL string `json:"url,omitempty"`
-	// Method is the HTTP method used for the request.  This value is always
-	// available, even if the embedded *http.Response is nil.
-	Method string `json:"method,omitempty"`
-	// Payload holds the contents of the response body (which may be nil or empty).
-	// This is provided here as the raw response.Body() reader will have already
-	// been drained.
-	Payload []byte `json:"-"`
+// OfferListResponseWrapper is an object.
+type OfferListResponseWrapper struct {
+	OfferListResponse *BaseResponse `json:"OfferListResponse,omitempty"` // OfferListResponse:
 }
 
-type EmdListResponse struct {
-	EMDID []Emd `json:"EMDID,omitempty"`
+// FormOfPaymentResponseWrapper is an object.
+type FormOfPaymentResponseWrapper struct {
+	FormOfPaymentResponse *BaseResponse `json:"FormOfPaymentResponse,omitempty"` // FormOfPaymentResponse:
 }
 
-type EmdListResponseWrapper struct {
-	EMDListResponse *EmdListResponse `json:"EMDListResponse,omitempty"`
+// FormOfPaymentListResponseWrapper is an object.
+type FormOfPaymentListResponseWrapper struct {
+	FormOfPaymentListResponse *BaseResponse `json:"FormOfPaymentListResponse,omitempty"` // FormOfPaymentListResponse:
 }
 
-type CatalogOfferingsHospitalityResponse struct {
-	// Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId.
-	TransactionId string `json:"transactionId,omitempty"`
-	// Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId.
-	TraceId                string                   `json:"traceId,omitempty"`
-	Result                 *Result                  `json:"Result,omitempty"`
-	Identifier             *Identifier              `json:"Identifier,omitempty"`
-	NextSteps              *NextSteps               `json:"NextSteps,omitempty"`
-	ReferenceList          []ReferenceList          `json:"ReferenceList,omitempty"`
-	CurrencyRateConversion []CurrencyRateConversion `json:"CurrencyRateConversion,omitempty"`
-	Type_                  string                   `json:"@type,omitempty"`
-	CatalogOfferings       *CatalogOfferings        `json:"CatalogOfferings,omitempty"`
+// PaymentResponseWrapper is an object.
+type PaymentResponseWrapper struct {
+	PaymentResponse *BaseResponse `json:"PaymentResponse,omitempty"` // PaymentResponse:
 }
 
-type CatalogOfferingsHospitalityResponseWrapper struct {
-	CatalogOfferingsHospitalityResponse *CatalogOfferingsHospitalityResponse `json:"CatalogOfferingsHospitalityResponse,omitempty"`
+// PaymentListResponseWrapper is an object.
+type PaymentListResponseWrapper struct {
+	PaymentListResponse *BaseResponse `json:"PaymentListResponse,omitempty"` // PaymentListResponse:
 }
 
-type OfferHospitalityResponse struct {
-	// Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId.
-	TransactionId string `json:"transactionId,omitempty"`
-	// Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId.
-	TraceId                string                   `json:"traceId,omitempty"`
-	Result                 *Result                  `json:"Result,omitempty"`
-	Identifier             *Identifier              `json:"Identifier,omitempty"`
-	NextSteps              *NextSteps               `json:"NextSteps,omitempty"`
-	ReferenceList          []ReferenceList          `json:"ReferenceList,omitempty"`
-	CurrencyRateConversion []CurrencyRateConversion `json:"CurrencyRateConversion,omitempty"`
-	Offer                  *Offer                   `json:"Offer,omitempty"`
-}
-
-type OfferHospitalityResponseWrapper struct {
-	OfferHospitalityResponse *OfferHospitalityResponse `json:"OfferHospitalityResponse,omitempty"`
-}
-
-type PropertiesResponse struct {
-	// Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId.
-	TransactionId string `json:"transactionId,omitempty"`
-	// Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId.
-	TraceId                string                   `json:"traceId,omitempty"`
-	Result                 *Result                  `json:"Result,omitempty"`
-	Identifier             *Identifier              `json:"Identifier,omitempty"`
-	NextSteps              *NextSteps               `json:"NextSteps,omitempty"`
-	ReferenceList          []ReferenceList          `json:"ReferenceList,omitempty"`
-	CurrencyRateConversion []CurrencyRateConversion `json:"CurrencyRateConversion,omitempty"`
-	Properties             *Properties              `json:"Properties,omitempty"`
-}
-
-type PropertiesResponseWrapper struct {
-	PropertiesResponse *PropertiesResponse `json:"PropertiesResponse,omitempty"`
-}
-
-type ReservationResponse struct {
-	// Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId.
-	TransactionId string `json:"transactionId,omitempty"`
-	// Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId.
-	TraceId                string                   `json:"traceId,omitempty"`
-	Result                 *Result                  `json:"Result,omitempty"`
-	Identifier             *Identifier              `json:"Identifier,omitempty"`
-	NextSteps              *NextSteps               `json:"NextSteps,omitempty"`
-	ReferenceList          []ReferenceList          `json:"ReferenceList,omitempty"`
-	CurrencyRateConversion []CurrencyRateConversion `json:"CurrencyRateConversion,omitempty"`
-	Reservation            *ReservationId           `json:"Reservation,omitempty"`
-}
-
+// ReservationResponseWrapper is an object.
 type ReservationResponseWrapper struct {
-	ReservationResponse *ReservationResponse `json:"ReservationResponse,omitempty"`
+	ReservationResponse *BaseResponse `json:"ReservationResponse,omitempty"` // ReservationResponse:
+}
+
+// ReservationListResponseWrapper is an object.
+type ReservationListResponseWrapper struct {
+	ReservationResponse *BaseResponse `json:"ReservationResponse,omitempty"` // ReservationResponse:
+}
+
+// ReceiptListResponseWrapper is an object.
+type ReceiptListResponseWrapper struct {
+	ReceiptListResponse *BaseResponse `json:"ReceiptListResponse,omitempty"` // ReceiptListResponse:
+}
+
+// TicketChangeEligibilityListResponseWrapper is an object.
+type TicketChangeEligibilityListResponseWrapper struct {
+	TicketChangeEligibilityListResponse *TicketChangeEligibilityListResponse `json:"TicketChangeEligibilityListResponse,omitempty"` // TicketChangeEligibilityListResponse:
+}
+
+// CatalogOfferingsAirChangeResponseWrapper is an object.
+type CatalogOfferingsAirChangeResponseWrapper struct {
+	CatalogOfferingsAirChangeResponse *BaseResponse `json:"CatalogOfferingsAirChangeResponse,omitempty"` // CatalogOfferingsAirChangeResponse:
 }

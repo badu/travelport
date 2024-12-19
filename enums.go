@@ -1,701 +1,1114 @@
 package travelport
 
-// ApplicationEnum : Application values like perperson , peroom
+// AllSomeNoneEnum is an enum. Used to indicate if all, some, or none of the ticket can be exchanged or         refunded
+type AllSomeNoneEnum string
+
+const (
+	AllSomeNoneEnumAll  AllSomeNoneEnum = "All"
+	AllSomeNoneEnumNone AllSomeNoneEnum = "None"
+	AllSomeNoneEnumSome AllSomeNoneEnum = "Some"
+)
+
+// ApplicableLevelEnum is an enum.
+type ApplicableLevelEnum string
+
+const (
+	ApplicableLevelEnumItinerary        ApplicableLevelEnum = "Itinerary"
+	ApplicableLevelEnumOther            ApplicableLevelEnum = "Other"
+	ApplicableLevelEnumPassengerOD      ApplicableLevelEnum = "PassengerOD"
+	ApplicableLevelEnumPassengerSegment ApplicableLevelEnum = "PassengerSegment"
+	ApplicableLevelEnumPassengers       ApplicableLevelEnum = "Passengers"
+	ApplicableLevelEnumSegment          ApplicableLevelEnum = "Segment"
+)
+
+// ApplicationEnum is an enum. Application values like perperson , peroom
 type ApplicationEnum string
 
-// List of ApplicationEnum
 const (
-	PER_PERSON_ApplicationEnum        ApplicationEnum = "PerPerson"
-	PER_ROOM_ApplicationEnum          ApplicationEnum = "PerRoom"
-	PER_ACCOMMODATION_ApplicationEnum ApplicationEnum = "PerAccommodation"
-	PER_HOUSE_ApplicationEnum         ApplicationEnum = "PerHouse"
-	PER_APARTMENT_ApplicationEnum     ApplicationEnum = "PerApartment"
-	PER_ADULT_ApplicationEnum         ApplicationEnum = "PerAdult"
-	PER_CHILD_ApplicationEnum         ApplicationEnum = "PerChild"
+	ApplicationEnumPerAccommodation ApplicationEnum = "PerAccommodation"
+	ApplicationEnumPerAdult         ApplicationEnum = "PerAdult"
+	ApplicationEnumPerApartment     ApplicationEnum = "PerApartment"
+	ApplicationEnumPerChild         ApplicationEnum = "PerChild"
+	ApplicationEnumPerHouse         ApplicationEnum = "PerHouse"
+	ApplicationEnumPerPerson        ApplicationEnum = "PerPerson"
+	ApplicationEnumPerRoom          ApplicationEnum = "PerRoom"
 )
 
-// AvailabilityStatusEnum : Identifies the availability status of an item.
-type AvailabilityStatusEnum string
+// AvailabilitySourceCodeENUM is an enum. A code representing the source of the flight availability
+type AvailabilitySourceCodeENUM string
 
-// List of AvailabilityStatusEnum
 const (
-	OPEN_AvailabilityStatusEnum                         AvailabilityStatusEnum = "Open"
-	CLOSE_AvailabilityStatusEnum                        AvailabilityStatusEnum = "Close"
-	CLOSED_ON_ARRIVAL_AvailabilityStatusEnum            AvailabilityStatusEnum = "ClosedOnArrival"
-	CLOSED_ON_ARRIVAL_ON_REQUEST_AvailabilityStatusEnum AvailabilityStatusEnum = "ClosedOnArrivalOnRequest"
-	ON_REQUEST_AvailabilityStatusEnum                   AvailabilityStatusEnum = "OnRequest"
-	REMOVE_CLOSE_ONLY_AvailabilityStatusEnum            AvailabilityStatusEnum = "RemoveCloseOnly"
-	OTHER_AvailabilityStatusEnum                        AvailabilityStatusEnum = "Other"
+	AvailabilitySourceCodeENUMA AvailabilitySourceCodeENUM = "A"
+	AvailabilitySourceCodeENUMB AvailabilitySourceCodeENUM = "B"
+	AvailabilitySourceCodeENUMC AvailabilitySourceCodeENUM = "C"
+	AvailabilitySourceCodeENUMD AvailabilitySourceCodeENUM = "D"
+	AvailabilitySourceCodeENUME AvailabilitySourceCodeENUM = "E"
+	AvailabilitySourceCodeENUMF AvailabilitySourceCodeENUM = "F"
+	AvailabilitySourceCodeENUMG AvailabilitySourceCodeENUM = "G"
+	AvailabilitySourceCodeENUMH AvailabilitySourceCodeENUM = "H"
+	AvailabilitySourceCodeENUMI AvailabilitySourceCodeENUM = "I"
+	AvailabilitySourceCodeENUMJ AvailabilitySourceCodeENUM = "J"
+	AvailabilitySourceCodeENUMK AvailabilitySourceCodeENUM = "K"
+	AvailabilitySourceCodeENUML AvailabilitySourceCodeENUM = "L"
+	AvailabilitySourceCodeENUMM AvailabilitySourceCodeENUM = "M"
+	AvailabilitySourceCodeENUMN AvailabilitySourceCodeENUM = "N"
+	AvailabilitySourceCodeENUMO AvailabilitySourceCodeENUM = "O"
+	AvailabilitySourceCodeENUMP AvailabilitySourceCodeENUM = "P"
+	AvailabilitySourceCodeENUMQ AvailabilitySourceCodeENUM = "Q"
+	AvailabilitySourceCodeENUMS AvailabilitySourceCodeENUM = "S"
+	AvailabilitySourceCodeENUMT AvailabilitySourceCodeENUM = "T"
+	AvailabilitySourceCodeENUMU AvailabilitySourceCodeENUM = "U"
+	AvailabilitySourceCodeENUMX AvailabilitySourceCodeENUM = "X"
+	AvailabilitySourceCodeENUMY AvailabilitySourceCodeENUM = "Y"
+	AvailabilitySourceCodeENUMZ AvailabilitySourceCodeENUM = "Z"
 )
 
-// CabinAirEnum : Specifies the cabin type (e.g. first, business, economy).
+// AvailabilityStatusENUMBase is an enum.
+type AvailabilityStatusENUMBase string
+
+const (
+	AvailabilityStatusENUMBaseAvailable      AvailabilityStatusENUMBase = "Available"
+	AvailabilityStatusENUMBaseNotAvailable   AvailabilityStatusENUMBase = "NotAvailable"
+	AvailabilityStatusENUMBaseRequest        AvailabilityStatusENUMBase = "Request"
+	AvailabilityStatusENUMBaseWaitlist       AvailabilityStatusENUMBase = "Waitlist"
+	AvailabilityStatusENUMBaseWaitlistClosed AvailabilityStatusENUMBase = "WaitlistClosed"
+)
+
+// BaggageTypeEnum is an enum.
+type BaggageTypeEnum string
+
+const (
+	BaggageTypeEnumAdditionalBags   BaggageTypeEnum = "AdditionalBags"
+	BaggageTypeEnumBaggageEmbargo   BaggageTypeEnum = "BaggageEmbargo"
+	BaggageTypeEnumCarryOn          BaggageTypeEnum = "CarryOn"
+	BaggageTypeEnumFirstCheckedBag  BaggageTypeEnum = "FirstCheckedBag"
+	BaggageTypeEnumSecondCheckedBag BaggageTypeEnum = "SecondCheckedBag"
+)
+
+// BatteryTypeEnum is an enum. The type of battery that is used in the device
+type BatteryTypeEnum string
+
+const (
+	BatteryTypeEnumLithiumION           BatteryTypeEnum = "LithiumION"
+	BatteryTypeEnumNoBatteryManualPower BatteryTypeEnum = "NoBatteryManualPower"
+	BatteryTypeEnumNonSpillableBattery  BatteryTypeEnum = "NonSpillableBattery"
+	BatteryTypeEnumWetCellBattery       BatteryTypeEnum = "WetCellBattery"
+)
+
+// BrandClassificationEnum is an enum. The Travelport classification used for a category of ancillaries such as Seat, Bags, etc. This is an initial list that will be added to.
+type BrandClassificationEnum string
+
+const (
+	BrandClassificationEnumCarryOn        BrandClassificationEnum = "CarryOn"
+	BrandClassificationEnumCheckedBag     BrandClassificationEnum = "CheckedBag"
+	BrandClassificationEnumLieFlatSeat    BrandClassificationEnum = "LieFlatSeat"
+	BrandClassificationEnumMeals          BrandClassificationEnum = "Meals"
+	BrandClassificationEnumOther          BrandClassificationEnum = "Other"
+	BrandClassificationEnumPersonalItem   BrandClassificationEnum = "PersonalItem"
+	BrandClassificationEnumPremiumSeat    BrandClassificationEnum = "PremiumSeat"
+	BrandClassificationEnumRebooking      BrandClassificationEnum = "Rebooking"
+	BrandClassificationEnumRefund         BrandClassificationEnum = "Refund"
+	BrandClassificationEnumSeatAssignment BrandClassificationEnum = "SeatAssignment"
+	BrandClassificationEnumWiFi           BrandClassificationEnum = "WiFi"
+)
+
+// BrandInclusionEnum is an enum. The indicator as to how the brand and the product are associated.
+type BrandInclusionEnum string
+
+const (
+	BrandInclusionEnumChargeable BrandInclusionEnum = "Chargeable"
+	BrandInclusionEnumIncluded   BrandInclusionEnum = "Included"
+	BrandInclusionEnumNotOffered BrandInclusionEnum = "Not Offered"
+)
+
+// CabinAirEnum is an enum. Specifies the cabin type (e.g. first, business, economy).
 type CabinAirEnum string
 
-// List of CabinAirEnum
 const (
-	PREMIUM_FIRST_CabinAirEnum   CabinAirEnum = "PremiumFirst"
-	FIRST_CabinAirEnum           CabinAirEnum = "First"
-	BUSINESS_CabinAirEnum        CabinAirEnum = "Business"
-	PREMIUM_ECONOMY_CabinAirEnum CabinAirEnum = "PremiumEconomy"
-	ECONOMY_CabinAirEnum         CabinAirEnum = "Economy"
+	CabinAirEnumBusiness       CabinAirEnum = "Business"
+	CabinAirEnumEconomy        CabinAirEnum = "Economy"
+	CabinAirEnumFirst          CabinAirEnum = "First"
+	CabinAirEnumPremiumEconomy CabinAirEnum = "PremiumEconomy"
+	CabinAirEnumPremiumFirst   CabinAirEnum = "PremiumFirst"
 )
 
-type CommissionApplyEnum string
+// CabinPreferenceTypeEnum is an enum.
+type CabinPreferenceTypeEnum string
 
-// List of CommissionApplyEnum
 const (
-	BASE_CommissionApplyEnum CommissionApplyEnum = "Base"
-	FEE_CommissionApplyEnum  CommissionApplyEnum = "Fee"
+	CabinPreferenceTypeEnumPermitted            CabinPreferenceTypeEnum = "Permitted"
+	CabinPreferenceTypeEnumPreferred            CabinPreferenceTypeEnum = "Preferred"
+	CabinPreferenceTypeEnumPreferredWithUpgrade CabinPreferenceTypeEnum = "PreferredWithUpgrade"
+	CabinPreferenceTypeEnumProhibited           CabinPreferenceTypeEnum = "Prohibited"
 )
 
-// CommissionEnum : Type of commission
-type CommissionEnum string
+// CarrierPreferenceTypeEnum is an enum.
+type CarrierPreferenceTypeEnum string
 
-// List of CommissionEnum
 const (
-	FULL_CommissionEnum           CommissionEnum = "Full"
-	PARTIAL_CommissionEnum        CommissionEnum = "Partial"
-	NON_PAYING_CommissionEnum     CommissionEnum = "Non-paying"
-	NO_SHOW_CommissionEnum        CommissionEnum = "No-show"
-	ADJUSTMENT_CommissionEnum     CommissionEnum = "Adjustment"
-	COMMISSIONABLE_CommissionEnum CommissionEnum = "Commissionable"
+	CarrierPreferenceTypeEnumPermitted  CarrierPreferenceTypeEnum = "Permitted"
+	CarrierPreferenceTypeEnumPreferred  CarrierPreferenceTypeEnum = "Preferred"
+	CarrierPreferenceTypeEnumProhibited CarrierPreferenceTypeEnum = "Prohibited"
 )
 
+// ChangeFeeMethodEnumBase is an enum.
 type ChangeFeeMethodEnumBase string
 
-// List of ChangeFeeMethodEnum_Base
 const (
-	EMD_ChangeFeeMethodEnumBase     ChangeFeeMethodEnumBase = "EMD"
-	MCO_ChangeFeeMethodEnumBase     ChangeFeeMethodEnumBase = "MCO"
-	TAX_ChangeFeeMethodEnumBase     ChangeFeeMethodEnumBase = "Tax"
-	UNKNOWN_ChangeFeeMethodEnumBase ChangeFeeMethodEnumBase = "Unknown"
+	ChangeFeeMethodEnumBaseEMD     ChangeFeeMethodEnumBase = "EMD"
+	ChangeFeeMethodEnumBaseMCO     ChangeFeeMethodEnumBase = "MCO"
+	ChangeFeeMethodEnumBaseTax     ChangeFeeMethodEnumBase = "Tax"
+	ChangeFeeMethodEnumBaseUnknown ChangeFeeMethodEnumBase = "Unknown"
 )
 
-// CurrencySourceEnum : The system requesting or returning the currency code specified in the attribute
-type CurrencySourceEnum string
+// ChangeTypeENUM is an enum.
+type ChangeTypeENUM string
 
-// List of CurrencySourceEnum
 const (
-	SUPPLIER_CurrencySourceEnum  CurrencySourceEnum = "Supplier"
-	CHARGED_CurrencySourceEnum   CurrencySourceEnum = "Charged"
-	REQUESTED_CurrencySourceEnum CurrencySourceEnum = "Requested"
+	ChangeTypeENUMChangeable      ChangeTypeENUM = "Changeable"
+	ChangeTypeENUMNonChangeable   ChangeTypeENUM = "NonChangeable"
+	ChangeTypeENUMPenaltyToChange ChangeTypeENUM = "PenaltyToChange"
 )
 
+// CityOrAirportEnum is an enum. Clarification of how the airport or city code is used
+type CityOrAirportEnum string
+
+const (
+	CityOrAirportEnumAirportOnly   CityOrAirportEnum = "Airport Only"
+	CityOrAirportEnumCityOnly      CityOrAirportEnum = "City Only"
+	CityOrAirportEnumCityOrAirport CityOrAirportEnum = "City or Airport"
+	CityOrAirportEnumUseDefault    CityOrAirportEnum = "Use Default"
+)
+
+// ClassOfServicePreferenceTypeEnum is an enum.
+type ClassOfServicePreferenceTypeEnum string
+
+const (
+	ClassOfServicePreferenceTypeEnumPermitted  ClassOfServicePreferenceTypeEnum = "Permitted"
+	ClassOfServicePreferenceTypeEnumPreferred  ClassOfServicePreferenceTypeEnum = "Preferred"
+	ClassOfServicePreferenceTypeEnumProhibited ClassOfServicePreferenceTypeEnum = "Prohibited"
+)
+
+// CommentSourceEnum is an enum.
 type CommentSourceEnum string
 
-// List of CommentSourceEnum
 const (
-	AGENCY_CommentSourceEnum   CommentSourceEnum = "Agency"
-	SUPPLIER_CommentSourceEnum CommentSourceEnum = "Supplier"
-	TRAVELER_CommentSourceEnum CommentSourceEnum = "Traveler"
+	CommentSourceEnumAgency   CommentSourceEnum = "Agency"
+	CommentSourceEnumSupplier CommentSourceEnum = "Supplier"
+	CommentSourceEnumTraveler CommentSourceEnum = "Traveler"
 )
 
-// ConfirmationStatusEnum : Status returned in a response for a two or more phase commitment process
+// CommissionApplyEnum is an enum.
+type CommissionApplyEnum string
+
+const (
+	CommissionApplyEnumBase CommissionApplyEnum = "Base"
+	CommissionApplyEnumFee  CommissionApplyEnum = "Fee"
+)
+
+// CommissionEnum is an enum. Type of commission
+type CommissionEnum string
+
+const (
+	CommissionEnumAdjustment     CommissionEnum = "Adjustment"
+	CommissionEnumCommissionable CommissionEnum = "Commissionable"
+	CommissionEnumFull           CommissionEnum = "Full"
+	CommissionEnumNoShow         CommissionEnum = "No-show"
+	CommissionEnumNonPaying      CommissionEnum = "Non-paying"
+	CommissionEnumPartial        CommissionEnum = "Partial"
+)
+
+// ConfirmationStatusEnum is an enum. Status returned in a response for a two or more phase commitment process
 type ConfirmationStatusEnum string
 
-// List of ConfirmationStatusEnum
 const (
-	PENDING_ConfirmationStatusEnum   ConfirmationStatusEnum = "Pending"
-	CONFIRMED_ConfirmationStatusEnum ConfirmationStatusEnum = "Confirmed"
-	CANCELLED_ConfirmationStatusEnum ConfirmationStatusEnum = "Cancelled"
-	REJECTED_ConfirmationStatusEnum  ConfirmationStatusEnum = "Rejected"
+	ConfirmationStatusEnumCancelled ConfirmationStatusEnum = "Cancelled"
+	ConfirmationStatusEnumConfirmed ConfirmationStatusEnum = "Confirmed"
+	ConfirmationStatusEnumPending   ConfirmationStatusEnum = "Pending"
+	ConfirmationStatusEnumRejected  ConfirmationStatusEnum = "Rejected"
 )
 
-// DayOfWeekEnum : The names of the days of the week.
+// ConnectionPointPreferenceTypeENUM is an enum. Preference type - preferred, permitted or prohibited. Preferred is not permitted as a preference type and will be ignored
+type ConnectionPointPreferenceTypeENUM string
+
+const (
+	ConnectionPointPreferenceTypeENUMPermitted  ConnectionPointPreferenceTypeENUM = "Permitted"
+	ConnectionPointPreferenceTypeENUMPreferred  ConnectionPointPreferenceTypeENUM = "Preferred"
+	ConnectionPointPreferenceTypeENUMProhibited ConnectionPointPreferenceTypeENUM = "Prohibited"
+)
+
+// ConnectionTypeEnum is an enum.
+type ConnectionTypeEnum string
+
+const (
+	ConnectionTypeEnumDoubleConnection ConnectionTypeEnum = "DoubleConnection"
+	ConnectionTypeEnumNonStopDirect    ConnectionTypeEnum = "NonStopDirect"
+	ConnectionTypeEnumSingleConnection ConnectionTypeEnum = "SingleConnection"
+	ConnectionTypeEnumStopDirect       ConnectionTypeEnum = "StopDirect"
+	ConnectionTypeEnumTripleConnection ConnectionTypeEnum = "TripleConnection"
+)
+
+// ContentSourceEnum is an enum. The source of the content to be returned in CatalogOfferings
+type ContentSourceEnum string
+
+const (
+	ContentSourceEnumGDS ContentSourceEnum = "GDS"
+	ContentSourceEnumNDC ContentSourceEnum = "NDC"
+)
+
+// CurrencySourceEnum is an enum. The system requesting or returning the currency code specified in the attribute
+type CurrencySourceEnum string
+
+const (
+	CurrencySourceEnumCharged   CurrencySourceEnum = "Charged"
+	CurrencySourceEnumRequested CurrencySourceEnum = "Requested"
+	CurrencySourceEnumSupplier  CurrencySourceEnum = "Supplier"
+)
+
+// DayOfWeekEnum is an enum. The names of the days of the week.
 type DayOfWeekEnum string
 
-// List of DayOfWeekEnum
 const (
-	SUNDAY_DayOfWeekEnum    DayOfWeekEnum = "Sunday"
-	MONDAY_DayOfWeekEnum    DayOfWeekEnum = "Monday"
-	TUESDAY_DayOfWeekEnum   DayOfWeekEnum = "Tuesday"
-	WEDNESDAY_DayOfWeekEnum DayOfWeekEnum = "Wednesday"
-	THURSDAY_DayOfWeekEnum  DayOfWeekEnum = "Thursday"
-	FRIDAY_DayOfWeekEnum    DayOfWeekEnum = "Friday"
-	SATURDAY_DayOfWeekEnum  DayOfWeekEnum = "Saturday"
+	DayOfWeekEnumFriday    DayOfWeekEnum = "Friday"
+	DayOfWeekEnumMonday    DayOfWeekEnum = "Monday"
+	DayOfWeekEnumSaturday  DayOfWeekEnum = "Saturday"
+	DayOfWeekEnumSunday    DayOfWeekEnum = "Sunday"
+	DayOfWeekEnumThursday  DayOfWeekEnum = "Thursday"
+	DayOfWeekEnumTuesday   DayOfWeekEnum = "Tuesday"
+	DayOfWeekEnumWednesday DayOfWeekEnum = "Wednesday"
 )
 
+// DestinationEnum is an enum.
 type DestinationEnum string
 
-// List of DestinationEnum
 const (
-	UNITED_STATES_OF_AMERICA_DestinationEnum                       DestinationEnum = "United States of America"
-	MEXICO__CENTRAL_AMERICA__CANAL_ZONE_COSTA_RICA_DestinationEnum DestinationEnum = "Mexico / Central America / Canal Zone/ Costa Rica"
-	ISLANDS_AND_COUNTRIES_OF_THE_CARIBBEAN_DestinationEnum         DestinationEnum = "Islands and Countries of the Caribbean"
-	SOUTH_AMERICA_DestinationEnum                                  DestinationEnum = "South America"
-	EUROPE_DestinationEnum                                         DestinationEnum = "Europe"
-	AFRICA_DestinationEnum                                         DestinationEnum = "Africa"
-	MIDDLE_EAST__WESTERN_ASIA_DestinationEnum                      DestinationEnum = "Middle East / Western Asia"
-	ASIA_DestinationEnum                                           DestinationEnum = "Asia"
-	AUSTRALIA__NEW_ZEALAND__PACIFIC_ISLANDS_DestinationEnum        DestinationEnum = "Australia / New Zealand / Pacific Islands"
-	CANADA_AND_GREENLAND_DestinationEnum                           DestinationEnum = "Canada and Greenland"
+	DestinationEnumAfrica                                 DestinationEnum = "Africa"
+	DestinationEnumAsia                                   DestinationEnum = "Asia"
+	DestinationEnumAustraliaNewZealandPacificIslands      DestinationEnum = "Australia / New Zealand / Pacific Islands"
+	DestinationEnumCanadaAndGreenland                     DestinationEnum = "Canada and Greenland"
+	DestinationEnumEurope                                 DestinationEnum = "Europe"
+	DestinationEnumIslandsAndCountriesOfTheCaribbean      DestinationEnum = "Islands and Countries of the Caribbean"
+	DestinationEnumMexicoCentralAmericaCanalZoneCostaRica DestinationEnum = "Mexico / Central America / Canal Zone/ Costa Rica"
+	DestinationEnumMiddleEastWesternAsia                  DestinationEnum = "Middle East / Western Asia"
+	DestinationEnumSouthAmerica                           DestinationEnum = "South America"
+	DestinationEnumUnitedStatesOfAmerica                  DestinationEnum = "United States of America"
 )
 
-// DocTypeCodeEnum : Codes from OTA DOC - Document Type
+// DocTypeCodeEnum is an enum. Codes from OTA DOC - Document Type
 type DocTypeCodeEnum string
 
-// List of DocTypeCodeEnum
 const (
-	VISA_DocTypeCodeEnum                                DocTypeCodeEnum = "Visa"
-	PASSPORT_DocTypeCodeEnum                            DocTypeCodeEnum = "Passport"
-	MILITARY_IDENTIFICATION_DocTypeCodeEnum             DocTypeCodeEnum = "MilitaryIdentification"
-	DRIVERS_LICENSE_DocTypeCodeEnum                     DocTypeCodeEnum = "DriversLicense"
-	NATIONAL_IDENTITY_DOCUMENT_DocTypeCodeEnum          DocTypeCodeEnum = "NationalIdentityDocument"
-	VACCINATION_CERTIFICATE_DocTypeCodeEnum             DocTypeCodeEnum = "VaccinationCertificate"
-	ALIEN_REGISTRATION_NUMBER_DocTypeCodeEnum           DocTypeCodeEnum = "AlienRegistrationNumber"
-	INSURANCE_POLICY_NUMBER_DocTypeCodeEnum             DocTypeCodeEnum = "InsurancePolicyNumber"
-	TAX_EXEMPTION_NUMBER_DocTypeCodeEnum                DocTypeCodeEnum = "TaxExemptionNumber"
-	VEHICLE_REGISTRATION_LICENSE_NUMBER_DocTypeCodeEnum DocTypeCodeEnum = "VehicleRegistrationLicenseNumber"
-	BODER_CROSSING_CARD_DocTypeCodeEnum                 DocTypeCodeEnum = "BoderCrossingCard"
-	REFUGEE_TRAVEL_DOCUMENT_DocTypeCodeEnum             DocTypeCodeEnum = "RefugeeTravelDocument"
-	PILOTS_LICENSE_DocTypeCodeEnum                      DocTypeCodeEnum = "PilotsLicense"
-	PERMANENT_RESIDENT_CARD_DocTypeCodeEnum             DocTypeCodeEnum = "PermanentResidentCard"
-	REDRESS_NUMBER_DocTypeCodeEnum                      DocTypeCodeEnum = "RedressNumber"
-	KNOWN_TRAVELER_NUMBER_DocTypeCodeEnum               DocTypeCodeEnum = "KnownTravelerNumber"
-	NON_STANDARD_DocTypeCodeEnum                        DocTypeCodeEnum = "Non-Standard"
-	MERCHANT_NUMBER_DocTypeCodeEnum                     DocTypeCodeEnum = "MerchantNumber"
-	AIR_NEXUS_CARD_DocTypeCodeEnum                      DocTypeCodeEnum = "AirNexusCard"
-	CREW_MEMBER_CERTIFICATE_DocTypeCodeEnum             DocTypeCodeEnum = "CrewMemberCertificate"
-	PASSPORT_CARD_DocTypeCodeEnum                       DocTypeCodeEnum = "PassportCard"
-	NATURALIZATION_CERTIFICATE_DocTypeCodeEnum          DocTypeCodeEnum = "NaturalizationCertificate"
-	TICKET_NUMBER_DocTypeCodeEnum                       DocTypeCodeEnum = "TicketNumber"
-	LARGE_FAMILY_DISCOUNT_CARD_DocTypeCodeEnum          DocTypeCodeEnum = "LargeFamilyDiscountCard"
+	DocTypeCodeEnumAirNexusCard                     DocTypeCodeEnum = "AirNexusCard"
+	DocTypeCodeEnumAlienRegistrationNumber          DocTypeCodeEnum = "AlienRegistrationNumber"
+	DocTypeCodeEnumBoderCrossingCard                DocTypeCodeEnum = "BoderCrossingCard"
+	DocTypeCodeEnumCrewMemberCertificate            DocTypeCodeEnum = "CrewMemberCertificate"
+	DocTypeCodeEnumDriversLicense                   DocTypeCodeEnum = "DriversLicense"
+	DocTypeCodeEnumInsurancePolicyNumber            DocTypeCodeEnum = "InsurancePolicyNumber"
+	DocTypeCodeEnumKnownTravelerNumber              DocTypeCodeEnum = "KnownTravelerNumber"
+	DocTypeCodeEnumLargeFamilyDiscountCard          DocTypeCodeEnum = "LargeFamilyDiscountCard"
+	DocTypeCodeEnumMerchantNumber                   DocTypeCodeEnum = "MerchantNumber"
+	DocTypeCodeEnumMilitaryIdentification           DocTypeCodeEnum = "MilitaryIdentification"
+	DocTypeCodeEnumNationalIdentityDocument         DocTypeCodeEnum = "NationalIdentityDocument"
+	DocTypeCodeEnumNaturalizationCertificate        DocTypeCodeEnum = "NaturalizationCertificate"
+	DocTypeCodeEnumNonStandard                      DocTypeCodeEnum = "Non-Standard"
+	DocTypeCodeEnumPassport                         DocTypeCodeEnum = "Passport"
+	DocTypeCodeEnumPassportCard                     DocTypeCodeEnum = "PassportCard"
+	DocTypeCodeEnumPermanentResidentCard            DocTypeCodeEnum = "PermanentResidentCard"
+	DocTypeCodeEnumPilotsLicense                    DocTypeCodeEnum = "PilotsLicense"
+	DocTypeCodeEnumRedressNumber                    DocTypeCodeEnum = "RedressNumber"
+	DocTypeCodeEnumRefugeeTravelDocument            DocTypeCodeEnum = "RefugeeTravelDocument"
+	DocTypeCodeEnumTaxExemptionNumber               DocTypeCodeEnum = "TaxExemptionNumber"
+	DocTypeCodeEnumTicketNumber                     DocTypeCodeEnum = "TicketNumber"
+	DocTypeCodeEnumVaccinationCertificate           DocTypeCodeEnum = "VaccinationCertificate"
+	DocTypeCodeEnumVehicleRegistrationLicenseNumber DocTypeCodeEnum = "VehicleRegistrationLicenseNumber"
+	DocTypeCodeEnumVisa                             DocTypeCodeEnum = "Visa"
 )
 
+// DocumentTypeEnum is an enum. Document type like EMD, MCO
 type DocumentTypeEnum string
 
-// List of DocumentTypeEnum
 const (
-	EMD_DocumentTypeEnum    DocumentTypeEnum = "EMD"
-	MCO_DocumentTypeEnum    DocumentTypeEnum = "MCO"
-	TICKET_DocumentTypeEnum DocumentTypeEnum = "Ticket"
+	DocumentTypeEnumEMD    DocumentTypeEnum = "EMD"
+	DocumentTypeEnumMCO    DocumentTypeEnum = "MCO"
+	DocumentTypeEnumTicket DocumentTypeEnum = "Ticket"
 )
 
-// DurationUnitEnum : Defines the Units that can be applied to Stay restrictions.
+// DurationUnitEnum is an enum. Defines the Units that can be applied to Stay restrictions.
 type DurationUnitEnum string
 
-// List of DurationUnitEnum
 const (
-	MINUTES_DurationUnitEnum DurationUnitEnum = "Minutes"
-	HOURS_DurationUnitEnum   DurationUnitEnum = "Hours"
-	DAYS_DurationUnitEnum    DurationUnitEnum = "Days"
-	MONTHS_DurationUnitEnum  DurationUnitEnum = "Months"
-	MON_DurationUnitEnum     DurationUnitEnum = "MON"
-	TUES_DurationUnitEnum    DurationUnitEnum = "TUES"
-	WED_DurationUnitEnum     DurationUnitEnum = "WED"
-	THU_DurationUnitEnum     DurationUnitEnum = "THU"
-	FRI_DurationUnitEnum     DurationUnitEnum = "FRI"
-	SAT_DurationUnitEnum     DurationUnitEnum = "SAT"
-	SUN_DurationUnitEnum     DurationUnitEnum = "SUN"
+	DurationUnitEnumDays    DurationUnitEnum = "Days"
+	DurationUnitEnumFRI     DurationUnitEnum = "FRI"
+	DurationUnitEnumHours   DurationUnitEnum = "Hours"
+	DurationUnitEnumMON     DurationUnitEnum = "MON"
+	DurationUnitEnumMinutes DurationUnitEnum = "Minutes"
+	DurationUnitEnumMonths  DurationUnitEnum = "Months"
+	DurationUnitEnumSAT     DurationUnitEnum = "SAT"
+	DurationUnitEnumSUN     DurationUnitEnum = "SUN"
+	DurationUnitEnumTHU     DurationUnitEnum = "THU"
+	DurationUnitEnumTUES    DurationUnitEnum = "TUES"
+	DurationUnitEnumWED     DurationUnitEnum = "WED"
 )
 
-// EncryptionTokenTypeAuthEnum : Type of Authentication
+// EMDStatusENUM is an enum.
+type EMDStatusENUM string
+
+const (
+	EMDStatusENUMOpen   EMDStatusENUM = "Open"
+	EMDStatusENUMRefund EMDStatusENUM = "Refund"
+	EMDStatusENUMUsed   EMDStatusENUM = "Used"
+	EMDStatusENUMVoid   EMDStatusENUM = "Void"
+)
+
+// EncryptionTokenTypeAuthEnum is an enum. Type of Authentication
 type EncryptionTokenTypeAuthEnum string
 
-// List of EncryptionTokenTypeAuthEnum
 const (
-	SECURITY_CODE_EncryptionTokenTypeAuthEnum   EncryptionTokenTypeAuthEnum = "SecurityCode"
-	MAGNETIC_STRIPE_EncryptionTokenTypeAuthEnum EncryptionTokenTypeAuthEnum = "MagneticStripe"
+	EncryptionTokenTypeAuthEnumMagneticStripe EncryptionTokenTypeAuthEnum = "MagneticStripe"
+	EncryptionTokenTypeAuthEnumSecurityCode   EncryptionTokenTypeAuthEnum = "SecurityCode"
 )
 
+// EnumAddressRole is an enum.
 type EnumAddressRole string
 
-// List of Enum_AddressRole
 const (
-	HOME_EnumAddressRole        EnumAddressRole = "Home"
-	BUSINESS_EnumAddressRole    EnumAddressRole = "Business"
-	MAILING_EnumAddressRole     EnumAddressRole = "Mailing"
-	DELIVERY_EnumAddressRole    EnumAddressRole = "Delivery"
-	DESTINATION_EnumAddressRole EnumAddressRole = "Destination"
-	OTHER_EnumAddressRole       EnumAddressRole = "Other"
-	BILLING_EnumAddressRole     EnumAddressRole = "Billing"
+	EnumAddressRoleBilling     EnumAddressRole = "Billing"
+	EnumAddressRoleBusiness    EnumAddressRole = "Business"
+	EnumAddressRoleDelivery    EnumAddressRole = "Delivery"
+	EnumAddressRoleDestination EnumAddressRole = "Destination"
+	EnumAddressRoleHome        EnumAddressRole = "Home"
+	EnumAddressRoleMailing     EnumAddressRole = "Mailing"
+	EnumAddressRoleOther       EnumAddressRole = "Other"
 )
 
+// EnumTelephoneRole is an enum.
 type EnumTelephoneRole string
 
-// List of Enum_TelephoneRole
 const (
-	MOBILE_EnumTelephoneRole EnumTelephoneRole = "Mobile"
-	HOME_EnumTelephoneRole   EnumTelephoneRole = "Home"
-	WORK_EnumTelephoneRole   EnumTelephoneRole = "Work"
-	OFFICE_EnumTelephoneRole EnumTelephoneRole = "Office"
-	FAX_EnumTelephoneRole    EnumTelephoneRole = "Fax"
-	OTHER_EnumTelephoneRole  EnumTelephoneRole = "Other"
+	EnumTelephoneRoleFax    EnumTelephoneRole = "Fax"
+	EnumTelephoneRoleHome   EnumTelephoneRole = "Home"
+	EnumTelephoneRoleMobile EnumTelephoneRole = "Mobile"
+	EnumTelephoneRoleOffice EnumTelephoneRole = "Office"
+	EnumTelephoneRoleOther  EnumTelephoneRole = "Other"
+	EnumTelephoneRoleWork   EnumTelephoneRole = "Work"
 )
 
-type EmdStatusEnum string
+// ExcludeGroundTypeEnum is an enum.
+type ExcludeGroundTypeEnum string
 
-// List of EMDStatusENUM
 const (
-	OPEN_EmdStatusEnum   EmdStatusEnum = "Open"
-	REFUND_EmdStatusEnum EmdStatusEnum = "Refund"
-	USED_EmdStatusEnum   EmdStatusEnum = "Used"
-	VOID_EmdStatusEnum   EmdStatusEnum = "Void"
+	ExcludeGroundTypeEnumAll   ExcludeGroundTypeEnum = "All"
+	ExcludeGroundTypeEnumTrain ExcludeGroundTypeEnum = "Train"
 )
 
-type FareQualifierEnumBase string
+// FareQualifierENUMBase is an enum.
+type FareQualifierENUMBase string
 
-// List of FareQualifierENUM_Base
 const (
-	CONSOLIDATOR_FareQualifierEnumBase               FareQualifierEnumBase = "Consolidator"
-	GOVERNMENT_FareQualifierEnumBase                 FareQualifierEnumBase = "Government"
-	MARINE_FareQualifierEnumBase                     FareQualifierEnumBase = "Marine"
-	MILITARY_FareQualifierEnumBase                   FareQualifierEnumBase = "Military"
-	REWARD_FareQualifierEnumBase                     FareQualifierEnumBase = "Reward"
-	STAND_BY_FareQualifierEnumBase                   FareQualifierEnumBase = "StandBy"
-	STAFF_FareQualifierEnumBase                      FareQualifierEnumBase = "Staff"
-	STUDENT_FareQualifierEnumBase                    FareQualifierEnumBase = "Student"
-	TOUR_FareQualifierEnumBase                       FareQualifierEnumBase = "Tour"
-	YOUTH_FareQualifierEnumBase                      FareQualifierEnumBase = "Youth"
-	VIST_FRIENDS_AND_RELATIVES_FareQualifierEnumBase FareQualifierEnumBase = "VistFriendsAndRelatives"
+	FareQualifierENUMBaseConsolidator            FareQualifierENUMBase = "Consolidator"
+	FareQualifierENUMBaseGovernment              FareQualifierENUMBase = "Government"
+	FareQualifierENUMBaseMarine                  FareQualifierENUMBase = "Marine"
+	FareQualifierENUMBaseMilitary                FareQualifierENUMBase = "Military"
+	FareQualifierENUMBaseReward                  FareQualifierENUMBase = "Reward"
+	FareQualifierENUMBaseStaff                   FareQualifierENUMBase = "Staff"
+	FareQualifierENUMBaseStandBy                 FareQualifierENUMBase = "StandBy"
+	FareQualifierENUMBaseStudent                 FareQualifierENUMBase = "Student"
+	FareQualifierENUMBaseTour                    FareQualifierENUMBase = "Tour"
+	FareQualifierENUMBaseVistFriendsAndRelatives FareQualifierENUMBase = "VistFriendsAndRelatives"
+	FareQualifierENUMBaseYouth                   FareQualifierENUMBase = "Youth"
 )
 
-// FareTypeEnum : Defines the type of fares to return (Only public fares, Only private fares, Only agency private fares, Only
+// FareRuleCategoryEnum is an enum.
+type FareRuleCategoryEnum string
+
+const (
+	FareRuleCategoryEnumAccompaniedTravel             FareRuleCategoryEnum = "AccompaniedTravel"
+	FareRuleCategoryEnumAdvanceReservationsTicketing  FareRuleCategoryEnum = "AdvanceReservationsTicketing"
+	FareRuleCategoryEnumAgentDiscounts                FareRuleCategoryEnum = "AgentDiscounts"
+	FareRuleCategoryEnumAllOtherDiscounts             FareRuleCategoryEnum = "AllOtherDiscounts"
+	FareRuleCategoryEnumApplicationAndOtherConditions FareRuleCategoryEnum = "ApplicationAndOtherConditions"
+	FareRuleCategoryEnumBlackoutDates                 FareRuleCategoryEnum = "BlackoutDates"
+	FareRuleCategoryEnumChildrenDiscounts             FareRuleCategoryEnum = "ChildrenDiscounts"
+	FareRuleCategoryEnumCombinations                  FareRuleCategoryEnum = "Combinations"
+	FareRuleCategoryEnumDayTime                       FareRuleCategoryEnum = "DayTime"
+	FareRuleCategoryEnumDeposits                      FareRuleCategoryEnum = "Deposits"
+	FareRuleCategoryEnumEligibility                   FareRuleCategoryEnum = "Eligibility"
+	FareRuleCategoryEnumFareByRule                    FareRuleCategoryEnum = "FareByRule"
+	FareRuleCategoryEnumFlightApplication             FareRuleCategoryEnum = "FlightApplication"
+	FareRuleCategoryEnumGroups                        FareRuleCategoryEnum = "Groups"
+	FareRuleCategoryEnumHIPMileageExeptions           FareRuleCategoryEnum = "HIPMileageExeptions"
+	FareRuleCategoryEnumMaximumStay                   FareRuleCategoryEnum = "MaximumStay"
+	FareRuleCategoryEnumMinimumStay                   FareRuleCategoryEnum = "MinimumStay"
+	FareRuleCategoryEnumMiscellaneousProvisions       FareRuleCategoryEnum = "MiscellaneousProvisions"
+	FareRuleCategoryEnumNegotiatedFares               FareRuleCategoryEnum = "NegotiatedFares"
+	FareRuleCategoryEnumPenalties                     FareRuleCategoryEnum = "Penalties"
+	FareRuleCategoryEnumSalesRestrictions             FareRuleCategoryEnum = "SalesRestrictions"
+	FareRuleCategoryEnumSeasonality                   FareRuleCategoryEnum = "Seasonality"
+	FareRuleCategoryEnumStopovers                     FareRuleCategoryEnum = "Stopovers"
+	FareRuleCategoryEnumSurcharges                    FareRuleCategoryEnum = "Surcharges"
+	FareRuleCategoryEnumTicketEndorsements            FareRuleCategoryEnum = "TicketEndorsements"
+	FareRuleCategoryEnumTourConductorDiscounts        FareRuleCategoryEnum = "TourConductorDiscounts"
+	FareRuleCategoryEnumTours                         FareRuleCategoryEnum = "Tours"
+	FareRuleCategoryEnumTransfers                     FareRuleCategoryEnum = "Transfers"
+	FareRuleCategoryEnumTravelRestrictions            FareRuleCategoryEnum = "TravelRestrictions"
+	FareRuleCategoryEnumVisitAnotherCountry           FareRuleCategoryEnum = "VisitAnotherCountry"
+	FareRuleCategoryEnumVoluntaryChanges              FareRuleCategoryEnum = "VoluntaryChanges"
+	FareRuleCategoryEnumVoluntaryRefunds              FareRuleCategoryEnum = "VoluntaryRefunds"
+)
+
+// FareRuleEnum is an enum.
+type FareRuleEnum string
+
+const (
+	FareRuleEnumLongText   FareRuleEnum = "LongText"
+	FareRuleEnumShortText  FareRuleEnum = "ShortText"
+	FareRuleEnumStructured FareRuleEnum = "Structured"
+)
+
+// FareTypeEnum is an enum. Defines the type of fares to return (Only public fares, Only private fares, Only agency private fares, Only
 type FareTypeEnum string
 
-// List of FareTypeEnum
 const (
-	PUBLIC_FARE_FareTypeEnum          FareTypeEnum = "PublicFare"
-	AGENCY_PRIVATE_FARE_FareTypeEnum  FareTypeEnum = "AgencyPrivateFare"
-	AIRLINE_PRIVATE_FARE_FareTypeEnum FareTypeEnum = "AirlinePrivateFare"
-	NET_FARE_FareTypeEnum             FareTypeEnum = "NetFare"
+	FareTypeEnumAgencyPrivateFare  FareTypeEnum = "AgencyPrivateFare"
+	FareTypeEnumAirlinePrivateFare FareTypeEnum = "AirlinePrivateFare"
+	FareTypeEnumNetFare            FareTypeEnum = "NetFare"
+	FareTypeEnumPublicFare         FareTypeEnum = "PublicFare"
 )
 
-// FormOfPaymentTypeEnum : The list of valid forms of payment.
+// FaresFilterEnum is an enum. Defines the type of fares to return (Only public fares, Only private fares, Only agency private fares, Only
+type FaresFilterEnum string
+
+const (
+	FaresFilterEnumAgencyPrivateFaresOnly  FaresFilterEnum = "AgencyPrivateFaresOnly"
+	FaresFilterEnumAirlinePrivateFaresOnly FaresFilterEnum = "AirlinePrivateFaresOnly"
+	FaresFilterEnumAllFares                FaresFilterEnum = "AllFares"
+	FaresFilterEnumNetFaresOnly            FaresFilterEnum = "NetFaresOnly"
+	FaresFilterEnumPrivateFaresOnly        FaresFilterEnum = "PrivateFaresOnly"
+	FaresFilterEnumPublicAndPrivateFares   FaresFilterEnum = "PublicAndPrivateFares"
+	FaresFilterEnumPublicFaresOnly         FaresFilterEnum = "PublicFaresOnly"
+)
+
+// FormOfPaymentTypeEnum is an enum. The list of valid forms of payment.
 type FormOfPaymentTypeEnum string
 
-// List of FormOfPaymentTypeEnum
 const (
-	AGENCY_ACCOUNT_FormOfPaymentTypeEnum FormOfPaymentTypeEnum = "AgencyAccount"
-	BSP_FormOfPaymentTypeEnum            FormOfPaymentTypeEnum = "BSP"
-	CASH_FormOfPaymentTypeEnum           FormOfPaymentTypeEnum = "Cash"
-	DOCUMENT_FormOfPaymentTypeEnum       FormOfPaymentTypeEnum = "Document"
-	INVOICE_FormOfPaymentTypeEnum        FormOfPaymentTypeEnum = "Invoice"
-	PAYMENT_CARD_FormOfPaymentTypeEnum   FormOfPaymentTypeEnum = "PaymentCard"
-	WAIVER_CODE_FormOfPaymentTypeEnum    FormOfPaymentTypeEnum = "WaiverCode"
+	FormOfPaymentTypeEnumAgencyAccount FormOfPaymentTypeEnum = "AgencyAccount"
+	FormOfPaymentTypeEnumBSP           FormOfPaymentTypeEnum = "BSP"
+	FormOfPaymentTypeEnumCash          FormOfPaymentTypeEnum = "Cash"
+	FormOfPaymentTypeEnumDocument      FormOfPaymentTypeEnum = "Document"
+	FormOfPaymentTypeEnumInvoice       FormOfPaymentTypeEnum = "Invoice"
+	FormOfPaymentTypeEnumPaymentCard   FormOfPaymentTypeEnum = "PaymentCard"
+	FormOfPaymentTypeEnumWaiverCode    FormOfPaymentTypeEnum = "WaiverCode"
 )
 
-// FrequencyEnum : Stay frequency like PerNight, PerDay
+// FrequencyEnum is an enum. Stay frequency like PerNight, PerDay
 type FrequencyEnum string
 
-// List of FrequencyEnum
 const (
-	PER_NIGHT_FrequencyEnum  FrequencyEnum = "PerNight"
-	PER_DAY_FrequencyEnum    FrequencyEnum = "PerDay"
-	PER_STAY_FrequencyEnum   FrequencyEnum = "PerStay"
-	PER_WEEK_FrequencyEnum   FrequencyEnum = "PerWeek"
-	ROUND_TRIP_FrequencyEnum FrequencyEnum = "RoundTrip"
-	ONE_WAY_FrequencyEnum    FrequencyEnum = "OneWay"
+	FrequencyEnumOneWay    FrequencyEnum = "OneWay"
+	FrequencyEnumPerDay    FrequencyEnum = "PerDay"
+	FrequencyEnumPerNight  FrequencyEnum = "PerNight"
+	FrequencyEnumPerStay   FrequencyEnum = "PerStay"
+	FrequencyEnumPerWeek   FrequencyEnum = "PerWeek"
+	FrequencyEnumRoundTrip FrequencyEnum = "RoundTrip"
 )
 
-// GenderEnum : Gender Type Male, Female etc. This field is not used by Hotel APIs and will be ignored
+// GenderEnum is an enum. Gender Type Male, Female etc. This field is not used by Hotel APIs and will be ignored
 type GenderEnum string
 
-// List of GenderEnum
 const (
-	MALE_GenderEnum        GenderEnum = "Male"
-	FEMALE_GenderEnum      GenderEnum = "Female"
-	UNKNOWN_GenderEnum     GenderEnum = "Unknown"
-	UNDISCLOSED_GenderEnum GenderEnum = "Undisclosed"
+	GenderEnumFemale      GenderEnum = "Female"
+	GenderEnumMale        GenderEnum = "Male"
+	GenderEnumUndisclosed GenderEnum = "Undisclosed"
+	GenderEnumUnknown     GenderEnum = "Unknown"
 )
 
-// GuaranteeTypeEnum : An enumerated type defining the guarantee to be applied to this reservation.
+// GeoPoliticalAreaLevelEnum is an enum. Represents the type of geopolitical area (country, Continent, State etc)
+type GeoPoliticalAreaLevelEnum string
+
+const (
+	GeoPoliticalAreaLevelEnumAirport        GeoPoliticalAreaLevelEnum = "Airport"
+	GeoPoliticalAreaLevelEnumCity           GeoPoliticalAreaLevelEnum = "City"
+	GeoPoliticalAreaLevelEnumContinent      GeoPoliticalAreaLevelEnum = "Continent"
+	GeoPoliticalAreaLevelEnumContinentGroup GeoPoliticalAreaLevelEnum = "Continent Group"
+	GeoPoliticalAreaLevelEnumCountry        GeoPoliticalAreaLevelEnum = "Country"
+	GeoPoliticalAreaLevelEnumGlobalArea     GeoPoliticalAreaLevelEnum = "Global Area"
+	GeoPoliticalAreaLevelEnumStateProvince  GeoPoliticalAreaLevelEnum = "StateProvince"
+	GeoPoliticalAreaLevelEnumWorld          GeoPoliticalAreaLevelEnum = "World"
+)
+
+// GuaranteeTypeEnum is an enum. An enumerated type defining the guarantee to be applied to this reservation.
 type GuaranteeTypeEnum string
 
-// List of GuaranteeTypeEnum
 const (
-	GUARANTEE_REQUIRED_GuaranteeTypeEnum      GuaranteeTypeEnum = "GuaranteeRequired"
-	CCDCVOUCHER_GuaranteeTypeEnum             GuaranteeTypeEnum = "CC/DC/Voucher"
-	PROFILE_GuaranteeTypeEnum                 GuaranteeTypeEnum = "Profile"
-	NO_GUARANTEES_ACCEPTED_GuaranteeTypeEnum  GuaranteeTypeEnum = "NoGuaranteesAccepted"
-	GUARANTEES_ACCEPTED_GuaranteeTypeEnum     GuaranteeTypeEnum = "GuaranteesAccepted"
-	DEPOSIT_REQUIRED_GuaranteeTypeEnum        GuaranteeTypeEnum = "DepositRequired"
-	GUARANTEES_NOT_REQUIRED_GuaranteeTypeEnum GuaranteeTypeEnum = "GuaranteesNotRequired"
-	DEPOSIT_NOT_REQUIRED_GuaranteeTypeEnum    GuaranteeTypeEnum = "DepositNotRequired"
-	PREPAY_REQUIRED_GuaranteeTypeEnum         GuaranteeTypeEnum = "PrepayRequired"
-	PREPAY_NOT_REQUIRED_GuaranteeTypeEnum     GuaranteeTypeEnum = "PrepayNotRequired"
-	NO_DEPOSITS_ACCEPTED_GuaranteeTypeEnum    GuaranteeTypeEnum = "NoDepositsAccepted"
+	GuaranteeTypeEnumCCDCVoucher           GuaranteeTypeEnum = "CC/DC/Voucher"
+	GuaranteeTypeEnumDepositNotRequired    GuaranteeTypeEnum = "DepositNotRequired"
+	GuaranteeTypeEnumDepositRequired       GuaranteeTypeEnum = "DepositRequired"
+	GuaranteeTypeEnumGuaranteeRequired     GuaranteeTypeEnum = "GuaranteeRequired"
+	GuaranteeTypeEnumGuaranteesAccepted    GuaranteeTypeEnum = "GuaranteesAccepted"
+	GuaranteeTypeEnumGuaranteesNotRequired GuaranteeTypeEnum = "GuaranteesNotRequired"
+	GuaranteeTypeEnumNoDepositsAccepted    GuaranteeTypeEnum = "NoDepositsAccepted"
+	GuaranteeTypeEnumNoGuaranteesAccepted  GuaranteeTypeEnum = "NoGuaranteesAccepted"
+	GuaranteeTypeEnumPrepayNotRequired     GuaranteeTypeEnum = "PrepayNotRequired"
+	GuaranteeTypeEnumPrepayRequired        GuaranteeTypeEnum = "PrepayRequired"
+	GuaranteeTypeEnumProfile               GuaranteeTypeEnum = "Profile"
 )
 
-type HotelAggregatorEnum string
+// IdentifierTypeENUM is an enum.
+type IdentifierTypeENUM string
 
-// List of HotelAggregatorEnum
 const (
-	TRAVELPORT_HotelAggregatorEnum HotelAggregatorEnum = "Travelport"
-	AGODA_HotelAggregatorEnum      HotelAggregatorEnum = "Agoda"
-	BOOKING_HotelAggregatorEnum    HotelAggregatorEnum = "Booking"
-	EXPEDIA_HotelAggregatorEnum    HotelAggregatorEnum = "Expedia"
-	BONOTEL_HotelAggregatorEnum    HotelAggregatorEnum = "Bonotel"
+	IdentifierTypeENUMDocumentNumber  IdentifierTypeENUM = "DocumentNumber"
+	IdentifierTypeENUMLocator         IdentifierTypeENUM = "Locator"
+	IdentifierTypeENUMReservation     IdentifierTypeENUM = "Reservation"
+	IdentifierTypeENUMSupplierLocator IdentifierTypeENUM = "SupplierLocator"
 )
 
-// HotelSortOrderEnum : The method to be used in sorting hotel properties
-type HotelSortOrderEnum string
-
-// List of HotelSortOrderEnum
-const (
-	STAR_RATING_HotelSortOrderEnum HotelSortOrderEnum = "StarRating"
-	PROXIMITY_HotelSortOrderEnum   HotelSortOrderEnum = "Proximity"
-)
-
-type IdentifierTypeEnum string
-
-// List of IdentifierTypeENUM
-const (
-	RESERVATION_IdentifierTypeEnum      IdentifierTypeEnum = "Reservation"
-	LOCATOR_IdentifierTypeEnum          IdentifierTypeEnum = "Locator"
-	SUPPLIER_LOCATOR_IdentifierTypeEnum IdentifierTypeEnum = "SupplierLocator"
-	DOCUMENT_NUMBER_IdentifierTypeEnum  IdentifierTypeEnum = "DocumentNumber"
-)
-
-// MeasurementTypeEnum : The type of measurement such as width, height, weight
-type MeasurementTypeEnum string
-
-// List of MeasurementTypeEnum
-const (
-	WIDTH_MeasurementTypeEnum             MeasurementTypeEnum = "Width"
-	HEIGHT_MeasurementTypeEnum            MeasurementTypeEnum = "Height"
-	DEPTH_MeasurementTypeEnum             MeasurementTypeEnum = "Depth"
-	WEIGHT_MeasurementTypeEnum            MeasurementTypeEnum = "Weight"
-	OVERALL_DIMENSION_MeasurementTypeEnum MeasurementTypeEnum = "OverallDimension"
-)
-
-// ListPaymentCardIssuerEnumBase : Source: OpenTravel
-type ListPaymentCardIssuerEnumBase string
-
-// List of ListPaymentCardIssuerEnum_Base
-const (
-	VISA_ListPaymentCardIssuerEnumBase                 ListPaymentCardIssuerEnumBase = "VISA"
-	US_AIRWAYS_ListPaymentCardIssuerEnumBase           ListPaymentCardIssuerEnumBase = "USAirways"
-	UNITED_AIRLINES_ListPaymentCardIssuerEnumBase      ListPaymentCardIssuerEnumBase = "UnitedAirlines"
-	STARWOOD_HOTELS_ListPaymentCardIssuerEnumBase      ListPaymentCardIssuerEnumBase = "StarwoodHotels"
-	SOUTHWEST_AIRLINES_ListPaymentCardIssuerEnumBase   ListPaymentCardIssuerEnumBase = "SouthwestAirlines"
-	RITZ_CARLTON_ListPaymentCardIssuerEnumBase         ListPaymentCardIssuerEnumBase = "RitzCarlton"
-	MASTERCARD_ListPaymentCardIssuerEnumBase           ListPaymentCardIssuerEnumBase = "Mastercard"
-	MARIOTT_ListPaymentCardIssuerEnumBase              ListPaymentCardIssuerEnumBase = "Mariott"
-	HYATT_ListPaymentCardIssuerEnumBase                ListPaymentCardIssuerEnumBase = "Hyatt"
-	HILTON_ListPaymentCardIssuerEnumBase               ListPaymentCardIssuerEnumBase = "Hilton"
-	EUROCARD_ListPaymentCardIssuerEnumBase             ListPaymentCardIssuerEnumBase = "Eurocard"
-	DISNEY_ListPaymentCardIssuerEnumBase               ListPaymentCardIssuerEnumBase = "Disney"
-	DISCOVER_CARD_ListPaymentCardIssuerEnumBase        ListPaymentCardIssuerEnumBase = "DiscoverCard"
-	DELTA_AIRLINES_ListPaymentCardIssuerEnumBase       ListPaymentCardIssuerEnumBase = "DeltaAirlines"
-	CONTINENTAL_AIRLINES_ListPaymentCardIssuerEnumBase ListPaymentCardIssuerEnumBase = "ContinentalAirlines"
-	CITIBANK_ListPaymentCardIssuerEnumBase             ListPaymentCardIssuerEnumBase = "Citibank"
-	CHASE_ListPaymentCardIssuerEnumBase                ListPaymentCardIssuerEnumBase = "Chase"
-	CAPITAL_ONE_ListPaymentCardIssuerEnumBase          ListPaymentCardIssuerEnumBase = "CapitalOne"
-	BRITISH_AIRWAYS_ListPaymentCardIssuerEnumBase      ListPaymentCardIssuerEnumBase = "BritishAirways"
-	BANK_OF_AMERICA_ListPaymentCardIssuerEnumBase      ListPaymentCardIssuerEnumBase = "BankOfAmerica"
-	AMERICAN_EXPRESS_ListPaymentCardIssuerEnumBase     ListPaymentCardIssuerEnumBase = "AmericanExpress"
-)
-
-// ImageSizeEnum : Indicates the size of the image. Hospitality APIs no longer support thumbnail
+// ImageSizeEnum is an enum. Indicates the size of the image. Hospitality APIs no longer support thumbnail
 type ImageSizeEnum string
 
-// List of ImageSizeEnum
 const (
-	LARGE_ImageSizeEnum       ImageSizeEnum = "Large"
-	MEDIUM_ImageSizeEnum      ImageSizeEnum = "Medium"
-	SMALL_ImageSizeEnum       ImageSizeEnum = "Small"
-	THUMBNAIL_ImageSizeEnum   ImageSizeEnum = "Thumbnail"
-	EXTRA_LARGE_ImageSizeEnum ImageSizeEnum = "ExtraLarge"
+	ImageSizeEnumExtraLarge ImageSizeEnum = "ExtraLarge"
+	ImageSizeEnumLarge      ImageSizeEnum = "Large"
+	ImageSizeEnumMedium     ImageSizeEnum = "Medium"
+	ImageSizeEnumSmall      ImageSizeEnum = "Small"
+	ImageSizeEnumThumbnail  ImageSizeEnum = "Thumbnail"
 )
 
-// NextStepMethodEnum : Describes the set of potential methods that can be taken after an operation.
+// ListPaymentCardIssuerEnumBase is an enum. Source: OpenTravel
+type ListPaymentCardIssuerEnumBase string
+
+const (
+	ListPaymentCardIssuerEnumBaseAmericanExpress     ListPaymentCardIssuerEnumBase = "AmericanExpress"
+	ListPaymentCardIssuerEnumBaseBankOfAmerica       ListPaymentCardIssuerEnumBase = "BankOfAmerica"
+	ListPaymentCardIssuerEnumBaseBritishAirways      ListPaymentCardIssuerEnumBase = "BritishAirways"
+	ListPaymentCardIssuerEnumBaseCapitalOne          ListPaymentCardIssuerEnumBase = "CapitalOne"
+	ListPaymentCardIssuerEnumBaseChase               ListPaymentCardIssuerEnumBase = "Chase"
+	ListPaymentCardIssuerEnumBaseCitibank            ListPaymentCardIssuerEnumBase = "Citibank"
+	ListPaymentCardIssuerEnumBaseContinentalAirlines ListPaymentCardIssuerEnumBase = "ContinentalAirlines"
+	ListPaymentCardIssuerEnumBaseDeltaAirlines       ListPaymentCardIssuerEnumBase = "DeltaAirlines"
+	ListPaymentCardIssuerEnumBaseDiscoverCard        ListPaymentCardIssuerEnumBase = "DiscoverCard"
+	ListPaymentCardIssuerEnumBaseDisney              ListPaymentCardIssuerEnumBase = "Disney"
+	ListPaymentCardIssuerEnumBaseEurocard            ListPaymentCardIssuerEnumBase = "Eurocard"
+	ListPaymentCardIssuerEnumBaseHilton              ListPaymentCardIssuerEnumBase = "Hilton"
+	ListPaymentCardIssuerEnumBaseHyatt               ListPaymentCardIssuerEnumBase = "Hyatt"
+	ListPaymentCardIssuerEnumBaseMariott             ListPaymentCardIssuerEnumBase = "Mariott"
+	ListPaymentCardIssuerEnumBaseMastercard          ListPaymentCardIssuerEnumBase = "Mastercard"
+	ListPaymentCardIssuerEnumBaseRitzCarlton         ListPaymentCardIssuerEnumBase = "RitzCarlton"
+	ListPaymentCardIssuerEnumBaseSouthwestAirlines   ListPaymentCardIssuerEnumBase = "SouthwestAirlines"
+	ListPaymentCardIssuerEnumBaseStarwoodHotels      ListPaymentCardIssuerEnumBase = "StarwoodHotels"
+	ListPaymentCardIssuerEnumBaseUSAirways           ListPaymentCardIssuerEnumBase = "USAirways"
+	ListPaymentCardIssuerEnumBaseUnitedAirlines      ListPaymentCardIssuerEnumBase = "UnitedAirlines"
+	ListPaymentCardIssuerEnumBaseVISA                ListPaymentCardIssuerEnumBase = "VISA"
+)
+
+// MeasurementTypeEnum is an enum. The type of measurement such as width, height, weight
+type MeasurementTypeEnum string
+
+const (
+	MeasurementTypeEnumDepth            MeasurementTypeEnum = "Depth"
+	MeasurementTypeEnumHeight           MeasurementTypeEnum = "Height"
+	MeasurementTypeEnumOverallDimension MeasurementTypeEnum = "OverallDimension"
+	MeasurementTypeEnumWeight           MeasurementTypeEnum = "Weight"
+	MeasurementTypeEnumWidth            MeasurementTypeEnum = "Width"
+)
+
+// NameTypeEnum is an enum. OTA Code
+type NameTypeEnum string
+
+const (
+	NameTypeEnumAlternate NameTypeEnum = "Alternate"
+	NameTypeEnumFormer    NameTypeEnum = "Former"
+	NameTypeEnumMaiden    NameTypeEnum = "Maiden"
+	NameTypeEnumNickname  NameTypeEnum = "Nickname"
+)
+
+// NextStepMethodEnum is an enum. Describes the set of potential methods that can be taken after an operation.
 type NextStepMethodEnum string
 
-// List of NextStepMethodEnum
 const (
-	GET_NextStepMethodEnum    NextStepMethodEnum = "GET"
-	DELETE_NextStepMethodEnum NextStepMethodEnum = "DELETE"
-	PUT_NextStepMethodEnum    NextStepMethodEnum = "PUT"
-	POST_NextStepMethodEnum   NextStepMethodEnum = "POST"
+	NextStepMethodEnumDELETE NextStepMethodEnum = "DELETE"
+	NextStepMethodEnumGET    NextStepMethodEnum = "GET"
+	NextStepMethodEnumPOST   NextStepMethodEnum = "POST"
+	NextStepMethodEnumPUT    NextStepMethodEnum = "PUT"
 )
 
-type PurposeEnum string
-
-// List of PurposeEnum
-const (
-	BUSINESS_PurposeEnum        PurposeEnum = "Business"
-	PLEASURE_PurposeEnum        PurposeEnum = "Pleasure"
-	CHARTER_SERVICE_PurposeEnum PurposeEnum = "Charter Service"
-)
-
-// ResultStatusEnum : The status of an error or warning
-type ResultStatusEnum string
-
-// List of ResultStatusEnum
-const (
-	NOT_PROCESSED_ResultStatusEnum ResultStatusEnum = "Not processed"
-	INCOMPLETE_ResultStatusEnum    ResultStatusEnum = "Incomplete"
-	COMPLETE_ResultStatusEnum      ResultStatusEnum = "Complete"
-	UNKNOWN_ResultStatusEnum       ResultStatusEnum = "Unknown"
-)
-
-type TourCodeTypeEnum string
-
-// List of TourCodeTypeEnum
-const (
-	BULK_TOUR_TourCodeTypeEnum      TourCodeTypeEnum = "Bulk Tour"
-	INCLUSIVE_TOUR_TourCodeTypeEnum TourCodeTypeEnum = "Inclusive Tour"
-)
-
-// YesNoUnknownEnum : Yes , No , Unknown
-type YesNoUnknownEnum string
-
-// List of YesNoUnknownEnum
-const (
-	YES_YesNoUnknownEnum     YesNoUnknownEnum = "Yes"
-	NO_YesNoUnknownEnum      YesNoUnknownEnum = "No"
-	UNKNOWN_YesNoUnknownEnum YesNoUnknownEnum = "Unknown"
-)
-
-// OfferStatusEnum : Offer Status like confirmed ,Pending etc
+// OfferStatusEnum is an enum. Offer Status like confirmed ,Pending etc
 type OfferStatusEnum string
 
-// List of OfferStatusEnum
 const (
-	CONFIRMED_OfferStatusEnum  OfferStatusEnum = "Confirmed"
-	CANCELLED_OfferStatusEnum  OfferStatusEnum = "Cancelled"
-	PENDING_OfferStatusEnum    OfferStatusEnum = "Pending"
-	MODIFED_OfferStatusEnum    OfferStatusEnum = "Modifed"
-	REJECTED_OfferStatusEnum   OfferStatusEnum = "Rejected"
-	WAITLISTED_OfferStatusEnum OfferStatusEnum = "Waitlisted"
+	OfferStatusEnumCancelled  OfferStatusEnum = "Cancelled"
+	OfferStatusEnumConfirmed  OfferStatusEnum = "Confirmed"
+	OfferStatusEnumModifed    OfferStatusEnum = "Modifed"
+	OfferStatusEnumPending    OfferStatusEnum = "Pending"
+	OfferStatusEnumRejected   OfferStatusEnum = "Rejected"
+	OfferStatusEnumWaitlisted OfferStatusEnum = "Waitlisted"
 )
 
-type OperationalStatusEnumBase string
+// OfferTypeENUM is an enum.
+type OfferTypeENUM string
 
-// List of OperationalStatusENUM_Base
 const (
-	FLIGHT_BOARDING_OperationalStatusEnumBase                 OperationalStatusEnumBase = "FlightBoarding"
-	FLIGHT_CANCELLED_OperationalStatusEnumBase                OperationalStatusEnumBase = "FlightCancelled"
-	FLIGHT_DEPARTED_OperationalStatusEnumBase                 OperationalStatusEnumBase = "FlightDeparted"
-	FLIGHT_PAST_SCHEDULED_DEPARTURE_OperationalStatusEnumBase OperationalStatusEnumBase = "FlightPastScheduledDeparture"
-	NOT_AVAILABLE_USE_SEARCH_OperationalStatusEnumBase        OperationalStatusEnumBase = "NotAvailableUseSearch"
+	OfferTypeENUMAgencyCalculatedExchange OfferTypeENUM = "AgencyCalculatedExchange"
+	OfferTypeENUMAgencyCalculatedRefund   OfferTypeENUM = "AgencyCalculatedRefund"
 )
 
-// OptInStatusEnum : Used to indicate marketing preferences, OptIn, OptOut
+// OperationalStatusENUMBase is an enum.
+type OperationalStatusENUMBase string
+
+const (
+	OperationalStatusENUMBaseFlightBoarding               OperationalStatusENUMBase = "FlightBoarding"
+	OperationalStatusENUMBaseFlightCancelled              OperationalStatusENUMBase = "FlightCancelled"
+	OperationalStatusENUMBaseFlightDeparted               OperationalStatusENUMBase = "FlightDeparted"
+	OperationalStatusENUMBaseFlightPastScheduledDeparture OperationalStatusENUMBase = "FlightPastScheduledDeparture"
+	OperationalStatusENUMBaseNotAvailableUseSearch        OperationalStatusENUMBase = "NotAvailableUseSearch"
+)
+
+// OptInStatusEnum is an enum. Used to indicate marketing preferences, OptIn, OptOut
 type OptInStatusEnum string
 
-// List of OptInStatusEnum
 const (
-	OPTED_IN_OptInStatusEnum  OptInStatusEnum = "OptedIn"
-	OPTED_OUT_OptInStatusEnum OptInStatusEnum = "OptedOut"
-	UNKNOWN_OptInStatusEnum   OptInStatusEnum = "Unknown"
+	OptInStatusEnumOptedIn  OptInStatusEnum = "OptedIn"
+	OptInStatusEnumOptedOut OptInStatusEnum = "OptedOut"
+	OptInStatusEnumUnknown  OptInStatusEnum = "Unknown"
 )
 
-// OrganizationTypeEnum : The type of organization such as an Agency, Branch, Company, Supplier, Provider
+// OrganizationCodeTypeEnum is an enum. Defines the type of code given to the Organization to obtain discounts or additional benefits
+type OrganizationCodeTypeEnum string
+
+const (
+	OrganizationCodeTypeEnumAccount                    OrganizationCodeTypeEnum = "Account"
+	OrganizationCodeTypeEnumOrganizationLoyaltyProgram OrganizationCodeTypeEnum = "OrganizationLoyaltyProgram"
+	OrganizationCodeTypeEnumTicketDesignator           OrganizationCodeTypeEnum = "TicketDesignator"
+	OrganizationCodeTypeEnumTour                       OrganizationCodeTypeEnum = "Tour"
+)
+
+// OrganizationTypeEnum is an enum. The type of organization such as an Agency, Branch, Company, Supplier, Provider
 type OrganizationTypeEnum string
 
-// List of OrganizationTypeEnum
 const (
-	TRAVEL_AGENCY_OrganizationTypeEnum      OrganizationTypeEnum = "TravelAgency"
-	AGENCY_BRANCH_OrganizationTypeEnum      OrganizationTypeEnum = "AgencyBranch"
-	LOYALTY_PROGRAM_OrganizationTypeEnum    OrganizationTypeEnum = "LoyaltyProgram"
-	ID_DOCUMENT_ISSUER_OrganizationTypeEnum OrganizationTypeEnum = "IdDocumentIssuer"
-	TRAVEL_SUPPLIER_OrganizationTypeEnum    OrganizationTypeEnum = "TravelSupplier"
-	TRAVEL_PROVIDER_OrganizationTypeEnum    OrganizationTypeEnum = "TravelProvider"
-	REGULATORY_OrganizationTypeEnum         OrganizationTypeEnum = "Regulatory"
+	OrganizationTypeEnumAgencyBranch     OrganizationTypeEnum = "AgencyBranch"
+	OrganizationTypeEnumIdDocumentIssuer OrganizationTypeEnum = "IdDocumentIssuer"
+	OrganizationTypeEnumLoyaltyProgram   OrganizationTypeEnum = "LoyaltyProgram"
+	OrganizationTypeEnumRegulatory       OrganizationTypeEnum = "Regulatory"
+	OrganizationTypeEnumTravelAgency     OrganizationTypeEnum = "TravelAgency"
+	OrganizationTypeEnumTravelProvider   OrganizationTypeEnum = "TravelProvider"
+	OrganizationTypeEnumTravelSupplier   OrganizationTypeEnum = "TravelSupplier"
 )
 
-// PaymentCardTypeEnum : Credit, Debit, etc.
+// PaymentCardTypeEnum is an enum. Credit, Debit, etc.
 type PaymentCardTypeEnum string
 
-// List of PaymentCardTypeEnum
 const (
-	CREDIT_PaymentCardTypeEnum PaymentCardTypeEnum = "Credit"
-	DEBIT_PaymentCardTypeEnum  PaymentCardTypeEnum = "Debit"
-	GIFT_PaymentCardTypeEnum   PaymentCardTypeEnum = "Gift"
+	PaymentCardTypeEnumCredit PaymentCardTypeEnum = "Credit"
+	PaymentCardTypeEnumDebit  PaymentCardTypeEnum = "Debit"
+	PaymentCardTypeEnumGift   PaymentCardTypeEnum = "Gift"
 )
 
-// PercentAppliesTo : The increment the percent applies to. Default value is Amount
+// PenaltyAppliesToEnum is an enum. Penalty applicable list
+type PenaltyAppliesToEnum string
+
+const (
+	PenaltyAppliesToEnumOneWay               PenaltyAppliesToEnum = "OneWay"
+	PenaltyAppliesToEnumPerCoupon            PenaltyAppliesToEnum = "PerCoupon"
+	PenaltyAppliesToEnumPerDirectionOfTravel PenaltyAppliesToEnum = "PerDirectionOfTravel"
+	PenaltyAppliesToEnumPerTicket            PenaltyAppliesToEnum = "PerTicket"
+	PenaltyAppliesToEnumRoundTrip            PenaltyAppliesToEnum = "RoundTrip"
+)
+
+// PenaltyTypeEnum is an enum.
+type PenaltyTypeEnum string
+
+const (
+	PenaltyTypeEnumAfterDeparture      PenaltyTypeEnum = "AfterDeparture"
+	PenaltyTypeEnumAnytime             PenaltyTypeEnum = "Anytime"
+	PenaltyTypeEnumBeforeDeparture     PenaltyTypeEnum = "BeforeDeparture"
+	PenaltyTypeEnumExchangeNotRequired PenaltyTypeEnum = "ExchangeNotRequired"
+	PenaltyTypeEnumExchangeRequired    PenaltyTypeEnum = "ExchangeRequired"
+	PenaltyTypeEnumMaximum             PenaltyTypeEnum = "Maximum"
+	PenaltyTypeEnumMinimum             PenaltyTypeEnum = "Minimum"
+	PenaltyTypeEnumNoShow              PenaltyTypeEnum = "NoShow"
+)
+
+// PercentAppliesTo is an enum. The increment the percent applies to. Default value is Amount
 type PercentAppliesTo string
 
-// List of PercentAppliesTo
 const (
-	NIGHTS_PercentAppliesTo PercentAppliesTo = "Nights"
-	STAY_PercentAppliesTo   PercentAppliesTo = "Stay"
-	AMOUNT_PercentAppliesTo PercentAppliesTo = "Amount"
+	PercentAppliesToAmount PercentAppliesTo = "Amount"
+	PercentAppliesToNights PercentAppliesTo = "Nights"
+	PercentAppliesToStay   PercentAppliesTo = "Stay"
 )
 
+// PictureofEnum is an enum.
 type PictureofEnum string
 
-// List of PictureofEnum
 const (
-	EXTERIOR_PictureofEnum        PictureofEnum = "Exterior"
-	LOBBY_PictureofEnum           PictureofEnum = "Lobby"
-	POOL_PictureofEnum            PictureofEnum = "Pool"
-	RESTAURANT_PictureofEnum      PictureofEnum = "Restaurant"
-	HEALTH_CLUB_PictureofEnum     PictureofEnum = "HealthClub"
-	GUEST_ROOM_PictureofEnum      PictureofEnum = "GuestRoom"
-	SUITE_PictureofEnum           PictureofEnum = "Suite"
-	CONFERENCE_ROOM_PictureofEnum PictureofEnum = "ConferenceRoom"
-	BALLROOM_PictureofEnum        PictureofEnum = "Ballroom"
-	GOLF_PictureofEnum            PictureofEnum = "Golf"
-	BEACH_PictureofEnum           PictureofEnum = "Beach"
-	SPA_PictureofEnum             PictureofEnum = "Spa"
-	BAR_PictureofEnum             PictureofEnum = "Bar"
-	RECREATIONAL_PictureofEnum    PictureofEnum = "Recreational"
-	ROOM_AMENITY_PictureofEnum    PictureofEnum = "RoomAmenity"
-	POPERTY_AMENITY_PictureofEnum PictureofEnum = "PopertyAmenity"
-	BUSINESS_CENTRE_PictureofEnum PictureofEnum = "BusinessCentre"
+	PictureofEnumBallroom       PictureofEnum = "Ballroom"
+	PictureofEnumBar            PictureofEnum = "Bar"
+	PictureofEnumBeach          PictureofEnum = "Beach"
+	PictureofEnumBusinessCentre PictureofEnum = "BusinessCentre"
+	PictureofEnumConferenceRoom PictureofEnum = "ConferenceRoom"
+	PictureofEnumExterior       PictureofEnum = "Exterior"
+	PictureofEnumGolf           PictureofEnum = "Golf"
+	PictureofEnumGuestRoom      PictureofEnum = "GuestRoom"
+	PictureofEnumHealthClub     PictureofEnum = "HealthClub"
+	PictureofEnumLobby          PictureofEnum = "Lobby"
+	PictureofEnumPool           PictureofEnum = "Pool"
+	PictureofEnumPopertyAmenity PictureofEnum = "PopertyAmenity"
+	PictureofEnumRecreational   PictureofEnum = "Recreational"
+	PictureofEnumRestaurant     PictureofEnum = "Restaurant"
+	PictureofEnumRoomAmenity    PictureofEnum = "RoomAmenity"
+	PictureofEnumSpa            PictureofEnum = "Spa"
+	PictureofEnumSuite          PictureofEnum = "Suite"
 )
 
-// PositionAccuracyEnum : Specifies the level of accuracy for the position
-type PositionAccuracyEnum string
-
-// List of PositionAccuracyEnum
-const (
-	ZIP9_CODE_PositionAccuracyEnum    PositionAccuracyEnum = "Zip9Code"
-	ZIP7_CODE_PositionAccuracyEnum    PositionAccuracyEnum = "Zip7Code"
-	ZIP5_CODE_PositionAccuracyEnum    PositionAccuracyEnum = "Zip5Code"
-	STREET_PositionAccuracyEnum       PositionAccuracyEnum = "Street"
-	STATE_PositionAccuracyEnum        PositionAccuracyEnum = "State"
-	PROPERTY_PositionAccuracyEnum     PositionAccuracyEnum = "Property"
-	INTERSECTION_PositionAccuracyEnum PositionAccuracyEnum = "Intersection"
-	EXACT_PositionAccuracyEnum        PositionAccuracyEnum = "Exact"
-	COUNTY_PositionAccuracyEnum       PositionAccuracyEnum = "County"
-	CITY_PositionAccuracyEnum         PositionAccuracyEnum = "City"
-	BLOCK_PositionAccuracyEnum        PositionAccuracyEnum = "Block"
-)
-
-// PricingEnum : An enumerated type that defines how a service is priced.
+// PricingEnum is an enum. An enumerated type that defines how a service is priced.
 type PricingEnum string
 
-// List of PricingEnum
 const (
-	STAY_PricingEnum             PricingEnum = "Per stay"
-	PERSON_PricingEnum           PricingEnum = "Per person"
-	NIGHT_PricingEnum            PricingEnum = "Per night"
-	PERSON_PER_NIGHT_PricingEnum PricingEnum = "Per person per night"
-	USE_PricingEnum              PricingEnum = "Per use"
+	PricingEnumPerNight          PricingEnum = "Per night"
+	PricingEnumPerPerson         PricingEnum = "Per person"
+	PricingEnumPerPersonPerNight PricingEnum = "Per person per night"
+	PricingEnumPerStay           PricingEnum = "Per stay"
+	PricingEnumPerUse            PricingEnum = "Per use"
 )
 
-// RateCategoryEnum : Rate Category
+// PurposeEnum is an enum.
+type PurposeEnum string
+
+const (
+	PurposeEnumBusiness       PurposeEnum = "Business"
+	PurposeEnumCharterService PurposeEnum = "Charter Service"
+	PurposeEnumPleasure       PurposeEnum = "Pleasure"
+)
+
+// RateAvailabilityEnum is an enum. Options are available to sell, need to call, or closed
+type RateAvailabilityEnum string
+
+const (
+	RateAvailabilityEnumAvailable  RateAvailabilityEnum = "Available"
+	RateAvailabilityEnumClosed     RateAvailabilityEnum = "Closed"
+	RateAvailabilityEnumNeedToCall RateAvailabilityEnum = "NeedToCall"
+)
+
+// RateCategoryEnum is an enum. Rate Category
 type RateCategoryEnum string
 
-// List of RateCategoryEnum
 const (
-	ALL_RateCategoryEnum                        RateCategoryEnum = "All"
-	ASSOCIATION_RateCategoryEnum                RateCategoryEnum = "Association"
-	BUSINESS_RateCategoryEnum                   RateCategoryEnum = "Business"
-	BUSINESS_STANDARD_RateCategoryEnum          RateCategoryEnum = "BusinessStandard"
-	CLUB_RateCategoryEnum                       RateCategoryEnum = "Club"
-	CONVENTION_RateCategoryEnum                 RateCategoryEnum = "Convention"
-	CORPORATE_RateCategoryEnum                  RateCategoryEnum = "Corporate"
-	CONSORTIUMS_RateCategoryEnum                RateCategoryEnum = "Consortiums"
-	DISCOUNT_RateCategoryEnum                   RateCategoryEnum = "Discount"
-	CREDENTIAL_RateCategoryEnum                 RateCategoryEnum = "Credential"
-	EMPLOYEE_RateCategoryEnum                   RateCategoryEnum = "Employee"
-	FAMILY_PLAN_RateCategoryEnum                RateCategoryEnum = "FamilyPlan"
-	FULL_INCLUSIVE_RateCategoryEnum             RateCategoryEnum = "FullInclusive"
-	GOVERNMENT_RateCategoryEnum                 RateCategoryEnum = "Government"
-	INCLUSIVE_RateCategoryEnum                  RateCategoryEnum = "Inclusive"
-	INDUSTRYTRAVEL_AGENT_RATE_RateCategoryEnum  RateCategoryEnum = "Industry/TravelAgentRate"
-	LEISURE_RateCategoryEnum                    RateCategoryEnum = "Leisure"
-	MILITARY_RateCategoryEnum                   RateCategoryEnum = "Military"
-	MONTHLY_RateCategoryEnum                    RateCategoryEnum = "Monthly"
-	MULTI_DAY_PACKAGE_RateCategoryEnum          RateCategoryEnum = "Multi-DayPackage"
-	MULT_LEVELNEGOTIATEDSECURE_RateCategoryEnum RateCategoryEnum = "MultLevel/Negotiated/Secure"
-	OTHER_RateCategoryEnum                      RateCategoryEnum = "Other"
-	PACKAGE__RateCategoryEnum                   RateCategoryEnum = "Package"
-	PRE_PAID_RateCategoryEnum                   RateCategoryEnum = "PrePaid"
-	PROMOTIONAL_RateCategoryEnum                RateCategoryEnum = "Promotional"
-	RACK_GENERAL_RateCategoryEnum               RateCategoryEnum = "RackGeneral"
-	SENIOR_CITIZEN_RateCategoryEnum             RateCategoryEnum = "SeniorCitizen"
-	STANDARD_RateCategoryEnum                   RateCategoryEnum = "Standard"
-	TOUR_RateCategoryEnum                       RateCategoryEnum = "Tour"
-	VIP_RateCategoryEnum                        RateCategoryEnum = "VIP"
-	WEEKEND_RateCategoryEnum                    RateCategoryEnum = "Weekend"
-	WEEKLY_RateCategoryEnum                     RateCategoryEnum = "Weekly"
+	RateCategoryEnumAll                       RateCategoryEnum = "All"
+	RateCategoryEnumAssociation               RateCategoryEnum = "Association"
+	RateCategoryEnumBusiness                  RateCategoryEnum = "Business"
+	RateCategoryEnumBusinessStandard          RateCategoryEnum = "BusinessStandard"
+	RateCategoryEnumClub                      RateCategoryEnum = "Club"
+	RateCategoryEnumConsortiums               RateCategoryEnum = "Consortiums"
+	RateCategoryEnumConvention                RateCategoryEnum = "Convention"
+	RateCategoryEnumCorporate                 RateCategoryEnum = "Corporate"
+	RateCategoryEnumCredential                RateCategoryEnum = "Credential"
+	RateCategoryEnumDiscount                  RateCategoryEnum = "Discount"
+	RateCategoryEnumEmployee                  RateCategoryEnum = "Employee"
+	RateCategoryEnumFamilyPlan                RateCategoryEnum = "FamilyPlan"
+	RateCategoryEnumFullInclusive             RateCategoryEnum = "FullInclusive"
+	RateCategoryEnumGovernment                RateCategoryEnum = "Government"
+	RateCategoryEnumInclusive                 RateCategoryEnum = "Inclusive"
+	RateCategoryEnumIndustryTravelAgentRate   RateCategoryEnum = "Industry/TravelAgentRate"
+	RateCategoryEnumLeisure                   RateCategoryEnum = "Leisure"
+	RateCategoryEnumMilitary                  RateCategoryEnum = "Military"
+	RateCategoryEnumMonthly                   RateCategoryEnum = "Monthly"
+	RateCategoryEnumMultLevelNegotiatedSecure RateCategoryEnum = "MultLevel/Negotiated/Secure"
+	RateCategoryEnumMultiDayPackage           RateCategoryEnum = "Multi-DayPackage"
+	RateCategoryEnumOther                     RateCategoryEnum = "Other"
+	RateCategoryEnumPackage                   RateCategoryEnum = "Package"
+	RateCategoryEnumPrePaid                   RateCategoryEnum = "PrePaid"
+	RateCategoryEnumPromotional               RateCategoryEnum = "Promotional"
+	RateCategoryEnumRackGeneral               RateCategoryEnum = "RackGeneral"
+	RateCategoryEnumSeniorCitizen             RateCategoryEnum = "SeniorCitizen"
+	RateCategoryEnumStandard                  RateCategoryEnum = "Standard"
+	RateCategoryEnumTour                      RateCategoryEnum = "Tour"
+	RateCategoryEnumVIP                       RateCategoryEnum = "VIP"
+	RateCategoryEnumWeekend                   RateCategoryEnum = "Weekend"
+	RateCategoryEnumWeekly                    RateCategoryEnum = "Weekly"
 )
 
-// RatePaymentEnum : Payment Rate
+// RatePaymentEnum is an enum. Payment Rate
 type RatePaymentEnum string
 
-// List of RatePaymentEnum
 const (
-	PRE_PAY_RatePaymentEnum  RatePaymentEnum = "PrePay"
-	POST_PAY_RatePaymentEnum RatePaymentEnum = "PostPay"
-	UNKNOWN_RatePaymentEnum  RatePaymentEnum = "Unknown"
+	RatePaymentEnumPostPay RatePaymentEnum = "PostPay"
+	RatePaymentEnumPrePay  RatePaymentEnum = "PrePay"
+	RatePaymentEnumUnknown RatePaymentEnum = "Unknown"
 )
 
-// ShareWithEnum : Share with like Supplier,agency etc
+// RatePeriodEnum is an enum. The time period for a rate such as daily, weekly, monthly
+type RatePeriodEnum string
+
+const (
+	RatePeriodEnumBundle       RatePeriodEnum = "Bundle"
+	RatePeriodEnumDay          RatePeriodEnum = "Day"
+	RatePeriodEnumExtraDay     RatePeriodEnum = "ExtraDay"
+	RatePeriodEnumExtraHour    RatePeriodEnum = "ExtraHour"
+	RatePeriodEnumExtraMonth   RatePeriodEnum = "ExtraMonth"
+	RatePeriodEnumExtraWeek    RatePeriodEnum = "ExtraWeek"
+	RatePeriodEnumHour         RatePeriodEnum = "Hour"
+	RatePeriodEnumMonth        RatePeriodEnum = "Month"
+	RatePeriodEnumOther        RatePeriodEnum = "Other"
+	RatePeriodEnumPackage      RatePeriodEnum = "Package"
+	RatePeriodEnumRentalPeriod RatePeriodEnum = "RentalPeriod"
+	RatePeriodEnumTotal        RatePeriodEnum = "Total"
+	RatePeriodEnumWeek         RatePeriodEnum = "Week"
+	RatePeriodEnumWeekend      RatePeriodEnum = "Weekend"
+	RatePeriodEnumYear         RatePeriodEnum = "Year"
+)
+
+// RateQualifierEnum is an enum. A closed enumeration of possible rate qualifiers for vehicle rental
+type RateQualifierEnum string
+
+const (
+	RateQualifierEnumDeposit     RateQualifierEnum = "Deposit"
+	RateQualifierEnumGuarantee   RateQualifierEnum = "Guarantee"
+	RateQualifierEnumOther       RateQualifierEnum = "Other"
+	RateQualifierEnumPostPayment RateQualifierEnum = "PostPayment"
+	RateQualifierEnumPrePayment  RateQualifierEnum = "PrePayment"
+)
+
+// RefundMethodEnumBase is an enum.
+type RefundMethodEnumBase string
+
+const (
+	RefundMethodEnumBaseEMD                 RefundMethodEnumBase = "EMD"
+	RefundMethodEnumBaseMCO                 RefundMethodEnumBase = "MCO"
+	RefundMethodEnumBaseRefundToOriginalFOP RefundMethodEnumBase = "RefundToOriginalFOP"
+	RefundMethodEnumBaseUnknown             RefundMethodEnumBase = "Unknown"
+)
+
+// RefundTypeEnum is an enum.
+type RefundTypeEnum string
+
+const (
+	RefundTypeEnumNonRefundable RefundTypeEnum = "NonRefundable"
+	RefundTypeEnumPartialRefund RefundTypeEnum = "PartialRefund"
+	RefundTypeEnumRefundable    RefundTypeEnum = "Refundable"
+)
+
+// RefundabilityEnumBase is an enum.
+type RefundabilityEnumBase string
+
+const (
+	RefundabilityEnumBaseNonRefundable RefundabilityEnumBase = "NonRefundable"
+	RefundabilityEnumBaseRefundable    RefundabilityEnumBase = "Refundable"
+	RefundabilityEnumBaseReusable      RefundabilityEnumBase = "Reusable"
+)
+
+// ResultStatusEnum is an enum. The status of an error or warning
+type ResultStatusEnum string
+
+const (
+	ResultStatusEnumComplete     ResultStatusEnum = "Complete"
+	ResultStatusEnumIncomplete   ResultStatusEnum = "Incomplete"
+	ResultStatusEnumNotProcessed ResultStatusEnum = "Not processed"
+	ResultStatusEnumUnknown      ResultStatusEnum = "Unknown"
+)
+
+// ScheduleChangeRepriceEnum is an enum.
+type ScheduleChangeRepriceEnum string
+
+const (
+	ScheduleChangeRepriceEnumAcceptOfferPriceDifference ScheduleChangeRepriceEnum = "AcceptOfferPriceDifference"
+	ScheduleChangeRepriceEnumRetainOfferPrice           ScheduleChangeRepriceEnum = "RetainOfferPrice"
+)
+
+// SearchRepresentationENUM is an enum. Customize search result set as leg or journey based
+type SearchRepresentationENUM string
+
+const (
+	SearchRepresentationENUMJourney SearchRepresentationENUM = "Journey"
+	SearchRepresentationENUMLeg     SearchRepresentationENUM = "Leg"
+)
+
+// SearchTypeEnum is an enum.
+type SearchTypeEnum string
+
+const (
+	SearchTypeEnumMetaSearch    SearchTypeEnum = "MetaSearch"
+	SearchTypeEnumOfferSearch   SearchTypeEnum = "OfferSearch"
+	SearchTypeEnumProductSearch SearchTypeEnum = "ProductSearch"
+)
+
+// SeatLocationEnum is an enum. Window, aisle, middle, etc.
+type SeatLocationEnum string
+
+const (
+	SeatLocationEnumAisle  SeatLocationEnum = "Aisle"
+	SeatLocationEnumMiddle SeatLocationEnum = "Middle"
+	SeatLocationEnumWindow SeatLocationEnum = "Window"
+)
+
+// ShareWithEnum is an enum. Share with like Supplier,agency etc
 type ShareWithEnum string
 
-// List of ShareWithEnum
 const (
-	SUPPLIER_ShareWithEnum ShareWithEnum = "Supplier"
-	AGENCY_ShareWithEnum   ShareWithEnum = "Agency"
-	TRAVELER_ShareWithEnum ShareWithEnum = "Traveler"
+	ShareWithEnumAgency   ShareWithEnum = "Agency"
+	ShareWithEnumSupplier ShareWithEnum = "Supplier"
+	ShareWithEnumTraveler ShareWithEnum = "Traveler"
 )
 
-// TextFormatEnum : Describes the format of text such as plain text or html
+// SpecialMealTypeEnum is an enum. Special Meal Type
+type SpecialMealTypeEnum string
+
+const (
+	SpecialMealTypeEnumBaby               SpecialMealTypeEnum = "Baby"
+	SpecialMealTypeEnumBland              SpecialMealTypeEnum = "Bland"
+	SpecialMealTypeEnumChild              SpecialMealTypeEnum = "Child"
+	SpecialMealTypeEnumDiabetic           SpecialMealTypeEnum = "Diabetic"
+	SpecialMealTypeEnumFruitPlatter       SpecialMealTypeEnum = "FruitPlatter"
+	SpecialMealTypeEnumGlutenIntolerant   SpecialMealTypeEnum = "GlutenIntolerant"
+	SpecialMealTypeEnumHindu              SpecialMealTypeEnum = "Hindu"
+	SpecialMealTypeEnumJain               SpecialMealTypeEnum = "Jain"
+	SpecialMealTypeEnumKosher             SpecialMealTypeEnum = "Kosher"
+	SpecialMealTypeEnumLowCalorie         SpecialMealTypeEnum = "LowCalorie"
+	SpecialMealTypeEnumLowFat             SpecialMealTypeEnum = "LowFat"
+	SpecialMealTypeEnumLowSalt            SpecialMealTypeEnum = "LowSalt"
+	SpecialMealTypeEnumMuslim             SpecialMealTypeEnum = "Muslim"
+	SpecialMealTypeEnumNonLactose         SpecialMealTypeEnum = "NonLactose"
+	SpecialMealTypeEnumNone               SpecialMealTypeEnum = "None"
+	SpecialMealTypeEnumSeafood            SpecialMealTypeEnum = "Seafood"
+	SpecialMealTypeEnumVegan              SpecialMealTypeEnum = "Vegan"
+	SpecialMealTypeEnumVegetarianHindu    SpecialMealTypeEnum = "VegetarianHindu"
+	SpecialMealTypeEnumVegetarianLactoOvo SpecialMealTypeEnum = "VegetarianLactoOvo"
+	SpecialMealTypeEnumVegetarianOriental SpecialMealTypeEnum = "VegetarianOriental"
+	SpecialMealTypeEnumVegetarianRaw      SpecialMealTypeEnum = "VegetarianRaw"
+)
+
+// TextFormatEnum is an enum. Describes the format of text such as plain text or html
 type TextFormatEnum string
 
-// List of TextFormatEnum
 const (
-	PLAIN_TEXT_TextFormatEnum TextFormatEnum = "PlainText"
-	HTML_TextFormatEnum       TextFormatEnum = "HTML"
+	TextFormatEnumHTML      TextFormatEnum = "HTML"
+	TextFormatEnumPlainText TextFormatEnum = "PlainText"
 )
 
-// UnitOfDistanceEnum : Miles, Kilometers, etc.
+// TourCodeTypeEnum is an enum.
+type TourCodeTypeEnum string
+
+const (
+	TourCodeTypeEnumBulkTour      TourCodeTypeEnum = "Bulk Tour"
+	TourCodeTypeEnumInclusiveTour TourCodeTypeEnum = "Inclusive Tour"
+)
+
+// TransportationCategoryEnum is an enum. Transportation Category
+type TransportationCategoryEnum string
+
+const (
+	TransportationCategoryEnumAlternate    TransportationCategoryEnum = "Alternate"
+	TransportationCategoryEnumBicycle      TransportationCategoryEnum = "Bicycle"
+	TransportationCategoryEnumBoat         TransportationCategoryEnum = "Boat"
+	TransportationCategoryEnumBus          TransportationCategoryEnum = "Bus"
+	TransportationCategoryEnumCableCar     TransportationCategoryEnum = "CableCar"
+	TransportationCategoryEnumCar          TransportationCategoryEnum = "Car"
+	TransportationCategoryEnumCarRushHour  TransportationCategoryEnum = "Car-RushHour"
+	TransportationCategoryEnumCarriage     TransportationCategoryEnum = "Carriage"
+	TransportationCategoryEnumCourtesyCar  TransportationCategoryEnum = "Courtesy Car"
+	TransportationCategoryEnumExpressTrain TransportationCategoryEnum = "ExpressTrain"
+	TransportationCategoryEnumFerry        TransportationCategoryEnum = "Ferry"
+	TransportationCategoryEnumHelicopter   TransportationCategoryEnum = "Helicopter"
+	TransportationCategoryEnumLimousine    TransportationCategoryEnum = "Limousine"
+	TransportationCategoryEnumMetro        TransportationCategoryEnum = "Metro"
+	TransportationCategoryEnumMonorail     TransportationCategoryEnum = "Monorail"
+	TransportationCategoryEnumMotorbike    TransportationCategoryEnum = "Motorbike"
+	TransportationCategoryEnumOther        TransportationCategoryEnum = "Other"
+	TransportationCategoryEnumPackAnimal   TransportationCategoryEnum = "Pack Animal"
+	TransportationCategoryEnumPlane        TransportationCategoryEnum = "Plane"
+	TransportationCategoryEnumPublic       TransportationCategoryEnum = "Public"
+	TransportationCategoryEnumRentalCar    TransportationCategoryEnum = "Rental Car"
+	TransportationCategoryEnumRickshaw     TransportationCategoryEnum = "Rickshaw"
+	TransportationCategoryEnumSedanChair   TransportationCategoryEnum = "SedanChair"
+	TransportationCategoryEnumShuttle      TransportationCategoryEnum = "Shuttle"
+	TransportationCategoryEnumSubway       TransportationCategoryEnum = "Subway"
+	TransportationCategoryEnumTaxi         TransportationCategoryEnum = "Taxi"
+	TransportationCategoryEnumTaxiRushHour TransportationCategoryEnum = "Taxi-RushHour"
+	TransportationCategoryEnumTrain        TransportationCategoryEnum = "Train"
+	TransportationCategoryEnumTrolley      TransportationCategoryEnum = "Trolley"
+	TransportationCategoryEnumTube         TransportationCategoryEnum = "Tube"
+	TransportationCategoryEnumWalk         TransportationCategoryEnum = "Walk"
+	TransportationCategoryEnumWaterTaxi    TransportationCategoryEnum = "WaterTaxi"
+)
+
+// TravelerGeographicTypeEnum is an enum.
+type TravelerGeographicTypeEnum string
+
+const (
+	TravelerGeographicTypeEnumCity          TravelerGeographicTypeEnum = "City"
+	TravelerGeographicTypeEnumCountry       TravelerGeographicTypeEnum = "Country"
+	TravelerGeographicTypeEnumStateProvince TravelerGeographicTypeEnum = "StateProvince"
+)
+
+// UnitOfDistanceEnum is an enum. Miles, Kilometers, etc.
 type UnitOfDistanceEnum string
 
-// List of UnitOfDistanceEnum
 const (
-	MILES_UnitOfDistanceEnum      UnitOfDistanceEnum = "Miles"
-	KILOMETERS_UnitOfDistanceEnum UnitOfDistanceEnum = "Kilometers"
+	UnitOfDistanceEnumKilometers UnitOfDistanceEnum = "Kilometers"
+	UnitOfDistanceEnumMiles      UnitOfDistanceEnum = "Miles"
 )
 
-// UnitOfMeasureEnum : The unit of measure in a code format. Refer to OpenTravel Code List Unit of Measure Code (UOM).
+// UnitOfMeasureEnum is an enum. The unit of measure in a code format. Refer to OpenTravel Code List Unit of Measure Code (UOM).
 type UnitOfMeasureEnum string
 
-// List of UnitOfMeasureEnum
 const (
-	MILES_UnitOfMeasureEnum             UnitOfMeasureEnum = "Miles"
-	KILOMETERS_UnitOfMeasureEnum        UnitOfMeasureEnum = "Kilometers"
-	METERS_UnitOfMeasureEnum            UnitOfMeasureEnum = "Meters"
-	MILLIMETERS_UnitOfMeasureEnum       UnitOfMeasureEnum = "Millimeters"
-	CENTIMETERS_UnitOfMeasureEnum       UnitOfMeasureEnum = "Centimeters"
-	YARDS_UnitOfMeasureEnum             UnitOfMeasureEnum = "Yards"
-	FEET_UnitOfMeasureEnum              UnitOfMeasureEnum = "Feet"
-	INCHES_UnitOfMeasureEnum            UnitOfMeasureEnum = "Inches"
-	PIXELS_UnitOfMeasureEnum            UnitOfMeasureEnum = "Pixels"
-	BLOCK_UnitOfMeasureEnum             UnitOfMeasureEnum = "Block"
-	MEGABYTES_UnitOfMeasureEnum         UnitOfMeasureEnum = "Megabytes"
-	GIGABYTES_UnitOfMeasureEnum         UnitOfMeasureEnum = "Gigabytes"
-	SQUARE_FEET_UnitOfMeasureEnum       UnitOfMeasureEnum = "Square feet"
-	SQUARE_METERS_UnitOfMeasureEnum     UnitOfMeasureEnum = "Square meters"
-	POUNDS_UnitOfMeasureEnum            UnitOfMeasureEnum = "Pounds"
-	KILOGRAMS_UnitOfMeasureEnum         UnitOfMeasureEnum = "Kilograms"
-	SQUARE_INCH_UnitOfMeasureEnum       UnitOfMeasureEnum = "Square inch"
-	SQUARE_YARD_UnitOfMeasureEnum       UnitOfMeasureEnum = "Square yard"
-	ACRE_UnitOfMeasureEnum              UnitOfMeasureEnum = "Acre"
-	SQUARE_MILLIMETER_UnitOfMeasureEnum UnitOfMeasureEnum = "Square millimeter"
-	SQUARE_CENTIMETER_UnitOfMeasureEnum UnitOfMeasureEnum = "Square centimeter"
-	HECTARE_UnitOfMeasureEnum           UnitOfMeasureEnum = "Hectare"
-	OUNCE_UnitOfMeasureEnum             UnitOfMeasureEnum = "Ounce"
-	GRAM_UnitOfMeasureEnum              UnitOfMeasureEnum = "Gram"
-	GALLONS_UnitOfMeasureEnum           UnitOfMeasureEnum = "Gallons"
-	LITERS_UnitOfMeasureEnum            UnitOfMeasureEnum = "Liters"
-	KILOWATTS_UnitOfMeasureEnum         UnitOfMeasureEnum = "Kilowatts"
-	CUBIC_METERS_UnitOfMeasureEnum      UnitOfMeasureEnum = "Cubic meters"
+	UnitOfMeasureEnumAcre             UnitOfMeasureEnum = "Acre"
+	UnitOfMeasureEnumBlock            UnitOfMeasureEnum = "Block"
+	UnitOfMeasureEnumCentimeters      UnitOfMeasureEnum = "Centimeters"
+	UnitOfMeasureEnumCubicMeters      UnitOfMeasureEnum = "Cubic meters"
+	UnitOfMeasureEnumFeet             UnitOfMeasureEnum = "Feet"
+	UnitOfMeasureEnumGallons          UnitOfMeasureEnum = "Gallons"
+	UnitOfMeasureEnumGigabytes        UnitOfMeasureEnum = "Gigabytes"
+	UnitOfMeasureEnumGram             UnitOfMeasureEnum = "Gram"
+	UnitOfMeasureEnumHectare          UnitOfMeasureEnum = "Hectare"
+	UnitOfMeasureEnumInches           UnitOfMeasureEnum = "Inches"
+	UnitOfMeasureEnumKilograms        UnitOfMeasureEnum = "Kilograms"
+	UnitOfMeasureEnumKilometers       UnitOfMeasureEnum = "Kilometers"
+	UnitOfMeasureEnumKilowatts        UnitOfMeasureEnum = "Kilowatts"
+	UnitOfMeasureEnumLiters           UnitOfMeasureEnum = "Liters"
+	UnitOfMeasureEnumMegabytes        UnitOfMeasureEnum = "Megabytes"
+	UnitOfMeasureEnumMeters           UnitOfMeasureEnum = "Meters"
+	UnitOfMeasureEnumMiles            UnitOfMeasureEnum = "Miles"
+	UnitOfMeasureEnumMillimeters      UnitOfMeasureEnum = "Millimeters"
+	UnitOfMeasureEnumOunce            UnitOfMeasureEnum = "Ounce"
+	UnitOfMeasureEnumPixels           UnitOfMeasureEnum = "Pixels"
+	UnitOfMeasureEnumPounds           UnitOfMeasureEnum = "Pounds"
+	UnitOfMeasureEnumSquareCentimeter UnitOfMeasureEnum = "Square centimeter"
+	UnitOfMeasureEnumSquareFeet       UnitOfMeasureEnum = "Square feet"
+	UnitOfMeasureEnumSquareInch       UnitOfMeasureEnum = "Square inch"
+	UnitOfMeasureEnumSquareMeters     UnitOfMeasureEnum = "Square meters"
+	UnitOfMeasureEnumSquareMillimeter UnitOfMeasureEnum = "Square millimeter"
+	UnitOfMeasureEnumSquareYard       UnitOfMeasureEnum = "Square yard"
+	UnitOfMeasureEnumYards            UnitOfMeasureEnum = "Yards"
 )
 
-// UnitOfSize : List of units of size i.e Square Feet, Square Meters
-type UnitOfSize string
+// WaiverEnum is an enum. Type of Waiver like Death of Pessanger,illness Of Passenger, Death of Immediate Family Member  etc
+type WaiverEnum string
 
-// List of UnitOfSize
 const (
-	FEET_UnitOfSize   UnitOfSize = "Square Feet"
-	METERS_UnitOfSize UnitOfSize = "Square Meters"
+	WaiverEnumDeathOfImmediateFamilyMember   WaiverEnum = "DeathOfImmediateFamilyMember"
+	WaiverEnumDeathOfPassenger               WaiverEnum = "DeathOfPassenger"
+	WaiverEnumIllnessOfImmediateFamilyMember WaiverEnum = "IllnessOfImmediateFamilyMember"
+	WaiverEnumIllnessOfPassenger             WaiverEnum = "IllnessOfPassenger"
+	WaiverEnumScheduleChange                 WaiverEnum = "ScheduleChange"
+	WaiverEnumTicketUpgrade                  WaiverEnum = "TicketUpgrade"
 )
 
-// YesNoInheritEnum : Used to indicate marketing preferences, Yes, No, Inherit
+// YesNoInheritEnum is an enum. Used to indicate marketing preferences, Yes, No, Inherit
 type YesNoInheritEnum string
 
-// List of YesNoInheritEnum
 const (
-	YES_YesNoInheritEnum     YesNoInheritEnum = "Yes"
-	NO_YesNoInheritEnum      YesNoInheritEnum = "No"
-	INHERIT_YesNoInheritEnum YesNoInheritEnum = "Inherit"
+	YesNoInheritEnumInherit YesNoInheritEnum = "Inherit"
+	YesNoInheritEnumNo      YesNoInheritEnum = "No"
+	YesNoInheritEnumYes     YesNoInheritEnum = "Yes"
+)
+
+// YesNoUnknownEnum is an enum. Yes , No , Unknown
+type YesNoUnknownEnum string
+
+const (
+	YesNoUnknownEnumNo      YesNoUnknownEnum = "No"
+	YesNoUnknownEnumUnknown YesNoUnknownEnum = "Unknown"
+	YesNoUnknownEnumYes     YesNoUnknownEnum = "Yes"
 )
